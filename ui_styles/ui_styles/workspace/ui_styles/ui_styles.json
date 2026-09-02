@@ -1,0 +1,53 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"ui_styles_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">UI Styles</span>\",\"col\":12}},{\"id\":\"ui_styles_intro\",\"type\":\"paragraph\",\"data\":{\"text\":\"Desk-UI-Funktionen aktivieren und konfigurieren. Funktionen bleiben inaktiv, bis sie hier eingeschaltet werden. Nur System-Manager sehen diesen Arbeitsbereich.\",\"col\":12}},{\"id\":\"ui_styles_spacer\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ui_styles_settings_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Einstellungen\",\"col\":4}}]",
+ "creation": "2026-09-01 16:55:38.915754",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "image",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "UI Styles",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Desk Background Settings",
+   "link_count": 0,
+   "link_to": "Desk Background Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-09-01 20:36:16.207432",
+ "modified_by": "Administrator",
+ "module": "UI Styles",
+ "name": "UI Styles",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "ERPNext Settings",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 1.0,
+ "shortcuts": [],
+ "title": "UI Styles"
+}

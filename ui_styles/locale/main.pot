@@ -1,0 +1,453 @@
+# Translations template for UI Styles.
+# Copyright (C) 2026 ALYF GmbH
+# This file is distributed under the same license as the UI Styles project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: UI Styles VERSION\n"
+"Report-Msgid-Bugs-To: hallo@alyf.de\n"
+"POT-Creation-Date: 2026-09-01 18:31+0000\n"
+"PO-Revision-Date: 2026-09-01 18:31+0000\n"
+"Last-Translator: hallo@alyf.de\n"
+"Language-Team: hallo@alyf.de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
+#. Header text in the UI Styles Workspace
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "<span class=\"h4\">UI Styles</span>"
+msgstr ""
+
+#. Label of a Check field in DocType 'Desk Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Allow users to choose their own colour"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Apricot"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Blue Gray"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Blush"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Butter"
+msgstr ""
+
+#. Label of a Check field in DocType 'Desk Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Clear all user choices on reset"
+msgstr ""
+
+#. Label of a Select field in DocType 'Desk Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Colour Strength"
+msgstr ""
+
+#: ui_styles/public/doc_table/form_builder_preview.js:93
+msgid "Column 1"
+msgstr ""
+
+#: ui_styles/public/doc_table/form_builder_preview.js:93
+msgid "Column 2"
+msgstr ""
+
+#: ui_styles/public/doc_table/form_builder_preview.js:93
+msgid "Column 3"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:379
+msgid "Column {0} is not a field of {1}"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:383
+msgid "Column {0} on {1} is not a value field"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Cool Gray"
+msgstr ""
+
+#: ui_styles/public/doc_table/doc_table.js:279
+msgid "Could not load Doc Table"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Cream"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the UI Styles Workspace
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "Desk Background Settings"
+msgstr ""
+
+#: ui_styles/desk_background/install.py:22
+msgid "Desk Colour"
+msgstr ""
+
+#: ui_styles/desk_background/install.py:31
+msgid "Desk Colour Strength"
+msgstr ""
+
+#: ui_styles/desk_background/user.py:35
+msgid "Desk Colour Strength must be Tint or Strong."
+msgstr ""
+
+#: ui_styles/desk_background/user.py:32
+msgid "Desk Colour must be one of the available presets."
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:436
+msgid "Doc Table Options cannot be a Single DocType ({0})."
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:440
+msgid "Doc Table Options cannot be a virtual DocType ({0})."
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:185
+msgid "Doc Table Options lines must use key: value (got {0})"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:429
+msgid "Doc Table Options must be a real DocType, not a child table ({0}). Use fieldtype Table for child tables."
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:123
+msgid "Doc Table Options: only one columns line is allowed"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:103
+msgid "Doc Table Options: only one doctype line is allowed"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:111
+msgid "Doc Table Options: only one link line is allowed"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:129
+msgid "Doc Table Options: only one order_by line is allowed"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:135
+msgid "Doc Table Options: only one page_size line is allowed"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:141
+msgid "Doc Table Options: only one page_size_max line is allowed"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:153
+msgid "Doc Table Options: only one pagination line is allowed"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:147
+msgid "Doc Table Options: only one visible_rows line is allowed"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:99
+msgid "Doc Table Options: unknown directive {0}"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:214
+msgid "Doc Table columns line must list at least one fieldname"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:105
+msgid "Doc Table doctype line must set a DocType name"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:81 ui_styles/doc_table/parse.py:158
+msgid "Doc Table fields require Options with doctype: DocType Name"
+msgstr ""
+
+#: ui_styles/doc_table/api.py:295
+msgid "Doc Table filter field {0} is not valid on {1}"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:114
+msgid "Doc Table link line must set a fieldname or none"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:192 ui_styles/doc_table/parse.py:207
+msgid "Doc Table order_by line must list at least one field"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:164
+msgid "Doc Table page_size ({0}) cannot be greater than page_size_max ({1})"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:236
+msgid "Doc Table pagination line must be pages or none"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:239
+msgid "Doc Table pagination must be pages or none (got {0})"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:230
+msgid "Doc Table {0} cannot be greater than {1}"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:220
+msgid "Doc Table {0} line must set a positive integer"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:225
+msgid "Doc Table {0} must be a positive integer (got {1})"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:228
+msgid "Doc Table {0} must be at least 1"
+msgstr ""
+
+#. Label of a Check field in DocType 'Desk Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Enable Desk Background"
+msgstr ""
+
+#. Paragraph text in the UI Styles Workspace
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "Enable and configure Desk UI features. Features stay inactive until turned on here. Only System Managers see this workspace."
+msgstr ""
+
+#: ui_styles/doc_table/api.py:161
+msgid "Field {0} is not a Doc Table on {1}"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:284
+msgid "Field {0} not found on {1}"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:290
+msgid "Field {0} on {1} must be a Link field"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:296
+msgid "Field {0} on {1} must be a Link to {2}"
+msgstr ""
+
+#: ui_styles/doc_table/api.py:55
+msgid "Fieldname is required"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Fog"
+msgstr ""
+
+#: ui_styles/doc_table/api.py:204 ui_styles/doc_table/api.py:229
+#: ui_styles/doc_table/api.py:291
+msgid "Invalid Doc Table filter"
+msgstr ""
+
+#: ui_styles/doc_table/api.py:300
+msgid "Invalid Doc Table filter operator: {0}"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:205
+msgid "Invalid Doc Table order_by clause: {0}"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Lavender"
+msgstr ""
+
+#: ui_styles/desk_background/install.py:27
+msgid "Leave empty to use the site default from Desk Background Settings."
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Light Red"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Lilac"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Mint"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:314 ui_styles/doc_table/parse.py:467
+msgid "Multiple Link fields on {0} point to {1} ({2}). Set link: fieldname in Options to choose one."
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:307
+msgid "No Link field on {0} pointing to {1}. Set link: fieldname in Options, or use link: none with field Filters."
+msgstr ""
+
+#: ui_styles/public/doc_table/doc_table.js:133
+#: ui_styles/public/doc_table/doc_table.js:336
+#: ui_styles/public/doc_table/doc_table.js:373
+msgid "No linked documents"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Off White"
+msgstr ""
+
+#: ui_styles/public/doc_table/doc_table.js:160
+msgid "Open List"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:424
+msgid "Options DocType {0} does not exist"
+msgstr ""
+
+#: ui_styles/doc_table/api.py:53
+msgid "Parent document is required"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Peach"
+msgstr ""
+
+#: ui_styles/public/doc_table/form_builder_preview.js:33
+msgid "Please set Options to a DocType before setting filters"
+msgstr ""
+
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.js:3
+msgid "Reset site colour to Standard?"
+msgstr ""
+
+#. Label of a Button field in DocType 'Desk Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Reset to Standard"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Rose Quartz"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Sage"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Sand"
+msgstr ""
+
+#: ui_styles/public/doc_table/doc_table.js:206
+msgid "Save the document to load related rows."
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Sea Foam"
+msgstr ""
+
+#: ui_styles/public/doc_table/doc_table.js:504
+msgid "Showing {0} of {1}"
+msgstr ""
+
+#: ui_styles/public/doc_table/doc_table.js:492
+msgid "Showing {0}-{1} of {2}"
+msgstr ""
+
+#. Label of a Select field in DocType 'Desk Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Site Colour Preset"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Sky"
+msgstr ""
+
+#. Option for the 'Colour Strength' (Select) field in DocType 'Desk Background
+#. Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Tint"
+msgstr ""
+
+#: ui_styles/desk_background/install.py:36
+msgid "Tint is softer, Strong is more vivid. Leave empty to use the site default."
+msgstr ""
+
+#. Description of the 'Colour Strength' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Tint is softer. Strong is more vivid. Both keep at least 4.5:1 text contrast."
+msgstr ""
+
+#. Name of a Workspace
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "UI Styles"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Warm Gray"
+msgstr ""
+
+#. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "Wheat"
+msgstr ""
+
+#. Description of the 'Enable Desk Background' (Check) field in DocType 'Desk
+#. Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "When off, Desk uses stock Frappe colours. Enable and pick a preset to apply a site-wide tint."
+msgstr ""
+
+#. Description of the 'Clear all user choices on reset' (Check) field in
+#. DocType 'Desk Background Settings'
+#: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
+msgid "When using Reset to Standard, also clear desk colour on all User records."
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:345
+msgid "order_by field {0} is not a field of {1}"
+msgstr ""
+
+#: ui_styles/doc_table/parse.py:351
+msgid "order_by field {0} on {1} is not a value field"
+msgstr ""
+

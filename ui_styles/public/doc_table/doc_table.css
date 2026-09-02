@@ -1,0 +1,247 @@
+.doc-table-control .doc-table-header {
+	gap: 0.5rem;
+	margin-bottom: 0.5rem;
+	min-height: 1.5rem;
+}
+
+.doc-table-control .doc-table-header .control-label {
+	margin-bottom: 0;
+}
+
+.doc-table-control .doc-table-toolbar {
+	gap: 0.25rem;
+	margin-left: auto;
+}
+
+.doc-table-control .doc-table-icon-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.15rem 0.35rem;
+	line-height: 1;
+}
+
+/* form-grid already supplies border / radius (--table-border-color). */
+.doc-table-control .doc-table-grid {
+	overflow: hidden;
+}
+
+.doc-table-control .datatable {
+	width: 100% !important;
+	max-width: 100%;
+	/* Desk DataTable uses -5px; that leaves a gap before our grid frame. */
+	margin-left: 0 !important;
+	margin-top: 0;
+	background-color: transparent;
+	/* Match form-grid / Desk DataTable header greys. */
+	--dt-header-cell-bg: var(--subtle-fg);
+	--dt-border-color: var(--table-border-color);
+	--dt-cell-bg: var(--fg-color);
+}
+
+/*
+ * DataTable draws its own frame (cell borders + scrollable top).
+ * Drop outer edges so only .form-grid's 1px border shows (no double left/top).
+ */
+.doc-table-control .dt-scrollable {
+	border: none !important;
+}
+
+.doc-table-control .dt-cell:first-child {
+	border-left: none !important;
+}
+
+.doc-table-control .dt-cell:last-child {
+	border-right: none !important;
+}
+
+.doc-table-control .dt-header .dt-cell,
+.doc-table-control .dt-scrollable .dt-row:first-child .dt-cell {
+	border-top: none !important;
+}
+
+.doc-table-control .dt-scrollable .dt-row:last-child:not(.dt-row-filter) .dt-cell {
+	border-bottom: none !important;
+}
+
+/* Header: same look as .grid-heading-row > .data-row.row */
+.doc-table-control .dt-header {
+	background-color: var(--subtle-fg);
+	border-bottom: 1px solid var(--table-border-color);
+	color: var(--gray-600);
+	z-index: 1;
+	width: 100% !important;
+	max-width: 100%;
+	box-sizing: border-box;
+	/* Reserve space so header columns stay aligned with body under the scrollbar. */
+	scrollbar-gutter: stable;
+	overflow: hidden;
+}
+
+.doc-table-control .dt-header .dt-row-header {
+	background-color: var(--subtle-fg);
+	height: 32px;
+	margin: 0;
+}
+
+.doc-table-control .dt-cell--header {
+	background-color: var(--subtle-fg);
+	height: 32px;
+	color: var(--gray-600);
+}
+
+/* Match .grid-heading-row .grid-static-col padding (6px 8px). */
+.doc-table-control .dt-cell--header .dt-cell__content {
+	height: 32px;
+	padding: 6px 8px;
+	line-height: 20px;
+	border: none;
+	font-weight: normal;
+	font-size: var(--text-sm);
+	color: var(--gray-600);
+	background-color: var(--subtle-fg);
+	box-sizing: border-box;
+}
+
+.doc-table-control .dt-scrollable {
+	/* Fallback before JS sets the exact 5-row height (5 * 35px). */
+	height: 175px;
+	max-height: 175px;
+	width: 100% !important;
+	max-width: 100%;
+	margin: 0;
+	box-sizing: border-box;
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+	background-color: var(--fg-color);
+}
+
+/* Body rows: same muted text as .grid-body .data-row */
+.doc-table-control .dt-scrollable .dt-row {
+	margin: 0;
+}
+
+.doc-table-control .dt-scrollable .dt-cell__content {
+	font-size: var(--text-sm);
+	color: var(--text-muted);
+	padding: 6px 8px;
+}
+
+/* Doc Table is read-only - hide column menu chevron (overlaps right-aligned headers). */
+.doc-table-control .dt-dropdown {
+	display: none !important;
+}
+
+.doc-table-control .dt-cell__content {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.doc-table-control .doc-table-cell {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.doc-table-control .doc-table-placeholder-cell {
+	visibility: hidden;
+	user-select: none;
+	pointer-events: none;
+}
+
+.doc-table-control .doc-table-empty,
+.doc-table-control .doc-table-error {
+	padding: 0.5rem 0;
+}
+
+.doc-table-control .doc-table-footer {
+	gap: 0.5rem;
+	margin-top: 0.5rem;
+}
+
+.doc-table-control .doc-table-footer-actions {
+	gap: 0.5rem;
+}
+
+.doc-table-control .doc-table-pager {
+	display: none;
+}
+
+.doc-table-control .doc-table-pager .btn {
+	min-width: 28px;
+}
+
+/* Align with first cell text: form-grid 1px border + cell padding 8px. */
+.doc-table-control .doc-table-status {
+	padding-left: 9px;
+}
+
+/* Form Builder preview - mirror form-grid heading */
+.doc-table-builder-preview {
+	background-color: var(--fg-color);
+	border: 1px solid var(--table-border-color);
+	border-radius: var(--border-radius-md);
+	overflow: hidden;
+	color: var(--text-color);
+}
+
+.doc-table-builder-head {
+	display: flex;
+	align-items: center;
+	background-color: var(--subtle-fg);
+	border-bottom: 1px solid var(--table-border-color);
+	color: var(--gray-600);
+	height: 32px;
+	position: relative;
+	padding-right: 28px;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.doc-table-builder-cols {
+	display: flex;
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	height: 32px;
+	align-items: center;
+}
+
+.doc-table-builder-col {
+	flex: 1;
+	padding: 6px 8px;
+	font-size: var(--text-sm);
+	color: var(--gray-600);
+	border-right: 1px solid var(--table-border-color);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 20px;
+	box-sizing: border-box;
+}
+
+.doc-table-builder-col:last-child {
+	border-right: none;
+}
+
+.doc-table-builder-head .doc-table-filter-btn {
+	position: absolute;
+	right: 4px;
+	top: 50%;
+	transform: translateY(-50%);
+	opacity: 1;
+	box-shadow: none;
+	padding: 2px;
+}
+
+.doc-table-builder-head .doc-table-filter-btn.btn-filter-applied {
+	background-color: var(--gray-300);
+}
+
+.doc-table-builder-body {
+	padding: 1.25rem 0.75rem;
+	font-size: var(--text-sm);
+	color: var(--text-muted);
+}
