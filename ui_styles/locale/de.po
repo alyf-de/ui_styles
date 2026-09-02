@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UI Styles VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-09-01 18:31+0000\n"
+"POT-Creation-Date: 2026-09-02 20:21+0000\n"
 "PO-Revision-Date: 2026-09-01 14:36+0000\n"
 "Last-Translator: hallo@alyf.de\n"
-"Language-Team: hallo@alyf.de\n"
 "Language: de\n"
+"Language-Team: hallo@alyf.de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.13.1\n"
 
 #. Header text in the UI Styles Workspace
@@ -82,6 +82,12 @@ msgstr "Spalte {0} ist kein Feld von {1}"
 msgid "Column {0} on {1} is not a value field"
 msgstr "Spalte {0} auf {1} ist kein Wertfeld"
 
+#. Description of the 'Dense List Layout' (Check) field in DocType 'List Scroll
+#. Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Compact Desk list columns with a shared horizontal scrollbar in the list header."
+msgstr "Kompakte Listenspalten mit gemeinsamer horizontaler Scrollleiste in der Listen-Kopfzeile."
+
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -97,6 +103,11 @@ msgstr "Doc Table konnte nicht geladen werden"
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Cream"
 msgstr "Creme"
+
+#. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Dense List Layout"
+msgstr "Dichte Listenansicht"
 
 #. Name of a DocType
 #. Label of a Link in the UI Styles Workspace
@@ -123,11 +134,11 @@ msgstr "Schreibtisch-Farbe muss eine der verfügbaren Voreinstellungen sein."
 
 #: ui_styles/doc_table/parse.py:436
 msgid "Doc Table Options cannot be a Single DocType ({0})."
-msgstr "Doc-Table-Optionen können kein einzelnes DocType sein ({0})."
+msgstr "Doc-Table-Optionen können kein Single DocType sein ({0})."
 
 #: ui_styles/doc_table/parse.py:440
 msgid "Doc Table Options cannot be a virtual DocType ({0})."
-msgstr "Doc-Table-Optionen können kein virtuelles DocType sein ({0})."
+msgstr "Doc-Table-Optionen können kein virtueller DocType sein ({0})."
 
 #: ui_styles/doc_table/parse.py:185
 msgid "Doc Table Options lines must use key: value (got {0})"
@@ -232,7 +243,7 @@ msgstr "Schreibtisch-Hintergrund aktivieren"
 
 #. Paragraph text in the UI Styles Workspace
 #: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
-msgid "Enable and configure Desk UI features. Features stay inactive until turned on here. Only System Managers see this workspace."
+msgid "Enable and configure Desk UI features. Features stay inactive until they are turned on here. Only System Managers see this workspace."
 msgstr "Desk-UI-Funktionen aktivieren und konfigurieren. Funktionen bleiben inaktiv, bis sie hier eingeschaltet werden. Nur System-Manager sehen diesen Arbeitsbereich."
 
 #: ui_styles/doc_table/api.py:161
@@ -255,6 +266,11 @@ msgstr "Feld {0} auf {1} muss eine Verknüpfung zu {2} sein"
 msgid "Fieldname is required"
 msgstr "Feldname ist erforderlich"
 
+#. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Floating List Paging"
+msgstr "Schwebende Listen-Paginierung"
+
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -273,6 +289,12 @@ msgstr "Ungültiger Doc-Table-Filteroperator: {0}"
 #: ui_styles/doc_table/parse.py:205
 msgid "Invalid Doc Table order_by clause: {0}"
 msgstr "Ungültige Doc-Table-order_by-Klausel: {0}"
+
+#. Description of the 'Sticky List Header' (Check) field in DocType 'List
+#. Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Keep the list column header visible just under Page Head while scrolling (tracks Page Head tuck/untuck)."
+msgstr "Spalten-Kopfzeile der Liste beim Scrollen direkt unter dem Seitenkopf sichtbar halten (folgt Ein-/Ausklappen des Seitenkopfs)."
 
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
@@ -295,6 +317,13 @@ msgstr "Hellrot"
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Lilac"
 msgstr "Flieder"
+
+#. Name of a DocType
+#. Label of a Link in the UI Styles Workspace
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "List Scroll Settings"
+msgstr "Listen-Scroll Einstellungen"
 
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
@@ -340,9 +369,19 @@ msgstr "Übergeordnetes Dokument ist erforderlich"
 msgid "Peach"
 msgstr "Pfirsich"
 
+#. Description of the 'Floating List Paging' (Check) field in DocType 'List
+#. Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Pin the list paging bar to the bottom of the window (same inset as at the end of the list) so it floats over the rows while scrolling."
+msgstr "Paginierungsleiste am unteren Fensterrand fixieren (gleicher Abstand wie am Listenende), sodass sie beim Scrollen über den Zeilen schwebt."
+
 #: ui_styles/public/doc_table/form_builder_preview.js:33
 msgid "Please set Options to a DocType before setting filters"
 msgstr "Bitte setzen Sie Optionen auf ein DocType, bevor Sie Filter setzen"
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:26
+msgid "Reload the Desk (hard refresh) to apply List Scroll Settings changes."
+msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Listen-Scroll Einstellungen anzuwenden."
 
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.js:3
 msgid "Reset site colour to Standard?"
@@ -400,6 +439,11 @@ msgstr "Seitenfarbvoreinstellung"
 msgid "Sky"
 msgstr "Himmel"
 
+#. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Sticky List Header"
+msgstr "Fixierte Listen-Kopfzeile"
+
 #. Option for the 'Colour Strength' (Select) field in DocType 'Desk Background
 #. Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -452,3 +496,4 @@ msgstr "order_by-Feld {0} ist kein Feld von {1}"
 #: ui_styles/doc_table/parse.py:351
 msgid "order_by field {0} on {1} is not a value field"
 msgstr "order_by-Feld {0} auf {1} ist kein Wertfeld"
+

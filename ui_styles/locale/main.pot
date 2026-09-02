@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UI Styles VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-09-01 18:31+0000\n"
-"PO-Revision-Date: 2026-09-01 18:31+0000\n"
+"POT-Creation-Date: 2026-09-02 20:21+0000\n"
+"PO-Revision-Date: 2026-09-02 20:21+0000\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -80,6 +80,12 @@ msgstr ""
 msgid "Column {0} on {1} is not a value field"
 msgstr ""
 
+#. Description of the 'Dense List Layout' (Check) field in DocType 'List Scroll
+#. Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Compact Desk list columns with a shared horizontal scrollbar in the list header."
+msgstr ""
+
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -94,6 +100,11 @@ msgstr ""
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Cream"
+msgstr ""
+
+#. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Dense List Layout"
 msgstr ""
 
 #. Name of a DocType
@@ -230,7 +241,7 @@ msgstr ""
 
 #. Paragraph text in the UI Styles Workspace
 #: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
-msgid "Enable and configure Desk UI features. Features stay inactive until turned on here. Only System Managers see this workspace."
+msgid "Enable and configure Desk UI features. Features stay inactive until they are turned on here. Only System Managers see this workspace."
 msgstr ""
 
 #: ui_styles/doc_table/api.py:161
@@ -253,6 +264,11 @@ msgstr ""
 msgid "Fieldname is required"
 msgstr ""
 
+#. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Floating List Paging"
+msgstr ""
+
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -270,6 +286,12 @@ msgstr ""
 
 #: ui_styles/doc_table/parse.py:205
 msgid "Invalid Doc Table order_by clause: {0}"
+msgstr ""
+
+#. Description of the 'Sticky List Header' (Check) field in DocType 'List
+#. Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Keep the list column header visible just under Page Head while scrolling (tracks Page Head tuck/untuck)."
 msgstr ""
 
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
@@ -292,6 +314,13 @@ msgstr ""
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Lilac"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the UI Styles Workspace
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "List Scroll Settings"
 msgstr ""
 
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
@@ -338,8 +367,18 @@ msgstr ""
 msgid "Peach"
 msgstr ""
 
+#. Description of the 'Floating List Paging' (Check) field in DocType 'List
+#. Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Pin the list paging bar to the bottom of the window (same inset as at the end of the list) so it floats over the rows while scrolling."
+msgstr ""
+
 #: ui_styles/public/doc_table/form_builder_preview.js:33
 msgid "Please set Options to a DocType before setting filters"
+msgstr ""
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:26
+msgid "Reload the Desk (hard refresh) to apply List Scroll Settings changes."
 msgstr ""
 
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.js:3
@@ -396,6 +435,11 @@ msgstr ""
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Sky"
+msgstr ""
+
+#. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Sticky List Header"
 msgstr ""
 
 #. Option for the 'Colour Strength' (Select) field in DocType 'Desk Background
