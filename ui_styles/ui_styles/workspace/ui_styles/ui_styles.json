@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"ui_styles_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">UI Styles</span>\",\"col\":12}},{\"id\":\"ui_styles_intro\",\"type\":\"paragraph\",\"data\":{\"text\":\"Desk-UI-Funktionen aktivieren und konfigurieren. Funktionen bleiben inaktiv, bis sie hier eingeschaltet werden. Nur System-Manager sehen diesen Arbeitsbereich.\",\"col\":12}},{\"id\":\"ui_styles_spacer\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ui_styles_settings_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Einstellungen\",\"col\":4}}]",
+ "content": "[{\"id\":\"ui_styles_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">UI Styles</span>\",\"col\":12}},{\"id\":\"ui_styles_intro\",\"type\":\"paragraph\",\"data\":{\"text\":\"Enable and configure Desk UI features. Features stay inactive until they are turned on here. Only System Managers see this workspace.\",\"col\":12}},{\"id\":\"ui_styles_spacer\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ui_styles_settings_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
  "creation": "2026-09-01 16:55:38.915754",
  "custom_blocks": [],
  "docstatus": 0,
@@ -17,7 +17,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Settings",
-   "link_count": 1,
+   "link_count": 2,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -31,9 +31,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "List Scroll Settings",
+   "link_count": 0,
+   "link_to": "List Scroll Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-09-01 20:36:16.207432",
+ "modified": "2026-09-02 21:12:36.042158",
  "modified_by": "Administrator",
  "module": "UI Styles",
  "name": "UI Styles",

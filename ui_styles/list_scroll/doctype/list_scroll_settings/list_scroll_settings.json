@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "creation": "2026-08-27 21:50:10.242832",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "dense_list_layout",
+  "sticky_list_header",
+  "floating_list_paging"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Compact Desk list columns with a shared horizontal scrollbar in the list header.",
+   "fieldname": "dense_list_layout",
+   "fieldtype": "Check",
+   "label": "Dense List Layout"
+  },
+  {
+   "default": "0",
+   "depends_on": "dense_list_layout",
+   "description": "Keep the list column header visible just under Page Head while scrolling (tracks Page Head tuck/untuck).",
+   "fieldname": "sticky_list_header",
+   "fieldtype": "Check",
+   "label": "Sticky List Header"
+  },
+  {
+   "default": "0",
+   "depends_on": "dense_list_layout",
+   "description": "Pin the list paging bar to the bottom of the window (same inset as at the end of the list) so it floats over the rows while scrolling.",
+   "fieldname": "floating_list_paging",
+   "fieldtype": "Check",
+   "label": "Floating List Paging"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-09-02 21:13:15.649491",
+ "modified_by": "Administrator",
+ "module": "List Scroll",
+ "name": "List Scroll Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

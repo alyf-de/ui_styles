@@ -11,6 +11,14 @@ Agent conventions: see [`AGENTS.md`](./AGENTS.md).
 
 Registers fieldtype **Doc Table**: a read-only form grid of related real DocTypes (not child tables). See `ui_styles/doc_table/README.md`.
 
+#### Desk Background
+
+Opt-in Desk background tint. See `ui_styles/desk_background/README.md`.
+
+#### List Scroll
+
+Opt-in dense Desk list layout with a shared horizontal scrollbar. See `ui_styles/list_scroll/README.md`.
+
 ### Installation
 
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:
