@@ -4,11 +4,20 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "defaults_section",
   "dense_list_layout",
   "sticky_list_header",
-  "floating_list_paging"
+  "floating_list_paging",
+  "sticky_columns",
+  "doctype_overrides_section",
+  "doctype_overrides"
  ],
  "fields": [
+  {
+   "fieldname": "defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Defaults"
+  },
   {
    "default": "0",
    "description": "Compact Desk list columns with a shared horizontal scrollbar in the list header.",
@@ -31,11 +40,31 @@
    "fieldname": "floating_list_paging",
    "fieldtype": "Check",
    "label": "Floating List Paging"
+  },
+  {
+   "default": "0",
+   "depends_on": "dense_list_layout",
+   "description": "Number of leading list columns that stay fixed while scrolling horizontally. Applies to all lists unless overridden below.",
+   "fieldname": "sticky_columns",
+   "fieldtype": "Int",
+   "label": "Sticky Columns"
+  },
+  {
+   "fieldname": "doctype_overrides_section",
+   "fieldtype": "Section Break",
+   "label": "DocType Overrides"
+  },
+  {
+   "description": "When a DocType has a row here, that row fully replaces the Defaults for its list view.",
+   "fieldname": "doctype_overrides",
+   "fieldtype": "Table",
+   "label": "DocType Overrides",
+   "options": "List Scroll DocType Setting"
   }
  ],
  "issingle": 1,
  "links": [],
- "modified": "2026-09-02 21:13:15.649491",
+ "modified": "2026-09-04 15:19:18.283837",
  "modified_by": "Administrator",
  "module": "List Scroll",
  "name": "List Scroll Settings",

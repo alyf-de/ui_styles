@@ -7,9 +7,9 @@ roles:
 
 # Listen-Scroll
 
-Dichte Listenansicht: Spalten in Inhaltsbreite und eine gemeinsame horizontale Scrollleiste in der Listen-Kopfzeile. Optional fixierte Spalten-Kopfzeile und schwebende Paginierung.
+Dichte Listenansicht: Spalten in Inhaltsbreite und eine gemeinsame horizontale Scrollleiste in der Listen-Kopfzeile. Optional fixierte Spalten-Kopfzeile, schwebende Paginierung und fixierte vordere Spalten. Standardeinstellungen und optionale DocType-Überschreibungen auf **Listen-Scroll Einstellungen**.
 
-Die Funktion ist **standardmäßig aus**. Ein System-Manager muss *Dichte Listenansicht* auf **Listen-Scroll Einstellungen** aktivieren, bevor sich Listen ändern.
+Die Funktion ist **standardmäßig aus**. Ein System-Manager muss *Dichte Listenansicht* (in den Standardeinstellungen oder in einer DocType-Überschreibung) aktivieren, bevor sich Listen ändern.
 
 ## Anleitungen
 

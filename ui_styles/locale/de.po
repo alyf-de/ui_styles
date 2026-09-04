@@ -497,3 +497,54 @@ msgstr "order_by-Feld {0} ist kein Feld von {1}"
 msgid "order_by field {0} on {1} is not a value field"
 msgstr "order_by-Feld {0} auf {1} ist kein Wertfeld"
 
+#. Label of a Section Break field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Defaults"
+msgstr "Standardeinstellungen"
+
+#. Label of a Section Break / Table field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "DocType Overrides"
+msgstr "DocType-Überschreibungen"
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:39
+msgid "DocType {0} is listed more than once in DocType Overrides."
+msgstr "DocType {0} ist in den DocType-Überschreibungen mehrfach aufgeführt."
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:42
+msgid "Duplicate DocType"
+msgstr "Doppeltes DocType"
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:51
+msgid "Invalid Value"
+msgstr "Ungültiger Wert"
+
+#. Name of a DocType
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+msgid "List Scroll DocType Setting"
+msgstr "Listen-Scroll DocType-Einstellung"
+
+#. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Number of leading list columns that stay fixed while scrolling horizontally. Applies to all lists unless overridden below."
+msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fest bleiben. Gilt für alle Listen, sofern unten nicht überschrieben."
+
+#. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll DocType Setting'
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+msgid "Number of leading list columns that stay fixed while scrolling horizontally."
+msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fest bleiben."
+
+#. Label of an Int field in DocType 'List Scroll Settings' / 'List Scroll DocType Setting'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+msgid "Sticky Columns"
+msgstr "Fixierte Spalten"
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:51
+msgid "Sticky Columns cannot be negative."
+msgstr "Fixierte Spalten dürfen nicht negativ sein."
+
+#. Description of the 'DocType Overrides' (Table) field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "When a DocType has a row here, that row fully replaces the Defaults for its list view."
+msgstr "Wenn ein DocType hier eine Zeile hat, ersetzt diese Zeile die Standardeinstellungen für dessen Listenansicht vollständig."
