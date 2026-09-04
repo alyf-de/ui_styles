@@ -72,10 +72,9 @@ frappe.provide("ui_styles.list_scroll");
 	}
 
 	function resolve_doctype(scope) {
-		const list =
-			scope?.classList?.contains("frappe-list")
-				? scope
-				: scope?.querySelector?.(".frappe-list") || scope?.closest?.(".frappe-list");
+		const list = scope?.classList?.contains("frappe-list")
+			? scope
+			: scope?.querySelector?.(".frappe-list") || scope?.closest?.(".frappe-list");
 		if (typeof cur_list !== "undefined" && cur_list?.doctype && cur_list.$result?.length) {
 			const result_el = cur_list.$result.get(0);
 			if (result_el && list && list.contains(result_el)) {

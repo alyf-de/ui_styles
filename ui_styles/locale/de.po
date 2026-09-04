@@ -513,7 +513,7 @@ msgstr "DocType {0} ist in den DocType-Überschreibungen mehrfach aufgeführt."
 
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:42
 msgid "Duplicate DocType"
-msgstr "Doppeltes DocType"
+msgstr "Doppelter DocType"
 
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:51
 msgid "Invalid Value"
@@ -527,12 +527,12 @@ msgstr "Listen-Scroll DocType-Einstellung"
 #. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll Settings'
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
 msgid "Number of leading list columns that stay fixed while scrolling horizontally. Applies to all lists unless overridden below."
-msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fest bleiben. Gilt für alle Listen, sofern unten nicht überschrieben."
+msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fixiert bleiben. Gilt für alle Listen, sofern unten nicht überschrieben."
 
 #. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll DocType Setting'
 #: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
 msgid "Number of leading list columns that stay fixed while scrolling horizontally."
-msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fest bleiben."
+msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fixiert bleiben."
 
 #. Label of an Int field in DocType 'List Scroll Settings' / 'List Scroll DocType Setting'
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
