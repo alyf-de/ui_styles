@@ -2,8 +2,8 @@
  * Dense Desk list: content-sized columns + one header scrollbar that pans
  * all row column tracks via transform (rows do not use their own scrollbar).
  *
- * Gated by List Scroll Settings → Dense List Layout
- * (frappe.boot.list_scroll.dense_list_layout).
+ * Gated by List Scroll Settings (frappe.boot.list_scroll.any_dense).
+ * Per-list settings from defaults / by_doctype; classes on .frappe-list.
  *
  * Sticky / floating live in sticky_header.js and floating_paging.js
  * (same namespace: ui_styles.list_scroll). Load order: sync → sticky → floating.
@@ -11,18 +11,24 @@
 frappe.provide("ui_styles.list_scroll");
 
 (() => {
-	if (!frappe.boot?.list_scroll?.dense_list_layout) {
+	const boot = frappe.boot?.list_scroll;
+	if (!boot?.any_dense) {
 		return;
 	}
 
 	const api = ui_styles.list_scroll;
-	document.documentElement.classList.add("list-layout-dense");
 
 	const COL_GAP = 13;
 	const ROW_GAP = 8;
 	const TRACK = "list-hscroll-track";
+	const STICKY = "list-hscroll-sticky";
+	const SCROLL = "list-hscroll-scroll";
 	const COL_MEASURE = "list-col-measure";
 	const HAS_HSCROLL = "list-has-hscroll";
+	const CLASS_DENSE = "list-layout-dense";
+	const CLASS_STICKY_HEADER = "list-sticky-header";
+	const CLASS_FLOATING = "list-floating-paging";
+	const CLASS_STICKY_SECTION = "list-scroll-sticky-section";
 
 	let syncing = false;
 	let measure_queued = false;
@@ -37,6 +43,134 @@ frappe.provide("ui_styles.list_scroll");
 			applying_dom = false;
 		}
 	};
+
+	function empty_settings() {
+		return {
+			dense_list_layout: 0,
+			sticky_list_header: 0,
+			floating_list_paging: 0,
+			sticky_columns: 0,
+		};
+	}
+
+	function copy_settings(src) {
+		const base = empty_settings();
+		if (!src) {
+			return base;
+		}
+		return {
+			dense_list_layout: src.dense_list_layout ? 1 : 0,
+			sticky_list_header: src.sticky_list_header ? 1 : 0,
+			floating_list_paging: src.floating_list_paging ? 1 : 0,
+			sticky_columns: Math.max(0, cint(src.sticky_columns)),
+		};
+	}
+
+	function cint(value) {
+		const n = parseInt(value, 10);
+		return Number.isFinite(n) ? n : 0;
+	}
+
+	function resolve_doctype(scope) {
+		const list = scope?.classList?.contains("frappe-list")
+			? scope
+			: scope?.querySelector?.(".frappe-list") || scope?.closest?.(".frappe-list");
+		if (typeof cur_list !== "undefined" && cur_list?.doctype && cur_list.$result?.length) {
+			const result_el = cur_list.$result.get(0);
+			if (result_el && list && list.contains(result_el)) {
+				return cur_list.doctype;
+			}
+		}
+		const route = frappe.get_route?.() || [];
+		if (route[0] === "List" && route[1]) {
+			return route[1];
+		}
+		return null;
+	}
+
+	function resolve_settings(scope) {
+		const defaults = copy_settings(boot.defaults);
+		const doctype = resolve_doctype(scope);
+		if (doctype && boot.by_doctype && boot.by_doctype[doctype]) {
+			return copy_settings(boot.by_doctype[doctype]);
+		}
+		return defaults;
+	}
+
+	api.resolve_settings = resolve_settings;
+
+	function get_list_el(scope) {
+		if (!scope) {
+			return null;
+		}
+		if (scope.classList?.contains("frappe-list")) {
+			return scope;
+		}
+		return scope.querySelector?.(".frappe-list") || scope.closest?.(".frappe-list");
+	}
+
+	function apply_scope_classes(scope, settings) {
+		const list = get_list_el(scope);
+		if (!list) {
+			return null;
+		}
+		const dense = Boolean(settings.dense_list_layout);
+		list.classList.toggle(CLASS_DENSE, dense);
+		list.classList.toggle(CLASS_STICKY_HEADER, dense && Boolean(settings.sticky_list_header));
+		list.classList.toggle(CLASS_FLOATING, dense && Boolean(settings.floating_list_paging));
+
+		const section = list.closest(".layout-main-section");
+		if (section) {
+			section.classList.toggle(
+				CLASS_STICKY_SECTION,
+				dense && Boolean(settings.sticky_list_header)
+			);
+		}
+		return list;
+	}
+
+	function clear_dense_layout(list) {
+		if (!list) {
+			return;
+		}
+		list.classList.remove(CLASS_DENSE, CLASS_STICKY_HEADER, CLASS_FLOATING, HAS_HSCROLL);
+		list.querySelectorAll(".list-row-head").forEach((head) => {
+			head.classList.remove(HAS_HSCROLL);
+			head.style.removeProperty("top");
+		});
+		const section = list.closest(".layout-main-section");
+		section?.classList.remove(CLASS_STICKY_SECTION);
+		all_lefts(list).forEach((left) => {
+			unwrap_split(left);
+			const track = left.querySelector(`:scope > .${TRACK}`);
+			if (track) {
+				api.with_dom_mutation(() => {
+					while (track.firstChild) {
+						left.insertBefore(track.firstChild, track);
+					}
+					track.remove();
+				});
+			}
+			left.querySelectorAll(".list-row-col").forEach((col) => {
+				col.classList.remove(COL_MEASURE);
+				col.style.flex = "";
+				col.style.width = "";
+				col.style.minWidth = "";
+				col.style.maxWidth = "";
+			});
+		});
+		level_rights(list).forEach(clear_level_right_size);
+		list.querySelectorAll(`.list-paging-area.list-paging-floating`).forEach((paging) => {
+			paging.classList.remove("list-paging-floating");
+			paging.style.left = "";
+			paging.style.width = "";
+			paging.style.bottom = "";
+		});
+		const spacer = list.querySelector(":scope > .list-paging-spacer");
+		if (spacer) {
+			spacer.style.height = "0px";
+		}
+	}
 
 	function get_scope(el) {
 		return el.closest(".frappe-list") || el.closest(".layout-main-section");
@@ -63,10 +197,62 @@ frappe.provide("ui_styles.list_scroll");
 		return lefts;
 	}
 
+	function header_scroll_el(scope) {
+		const header = header_left(scope);
+		if (!header) {
+			return null;
+		}
+		return header.querySelector(`:scope > .${SCROLL}`) || header;
+	}
+
+	function unwrap_split(left) {
+		const sticky = left.querySelector(`:scope > .${STICKY}`);
+		const scroll = left.querySelector(`:scope > .${SCROLL}`);
+		if (!sticky && !scroll) {
+			return;
+		}
+		api.with_dom_mutation(() => {
+			const track = scroll?.querySelector(`:scope > .${TRACK}`);
+			const frag = document.createDocumentFragment();
+			if (sticky) {
+				while (sticky.firstChild) {
+					frag.appendChild(sticky.firstChild);
+				}
+				sticky.remove();
+			}
+			if (track) {
+				while (track.firstChild) {
+					frag.appendChild(track.firstChild);
+				}
+			}
+			if (scroll) {
+				scroll.remove();
+			}
+			const existing_track = left.querySelector(`:scope > .${TRACK}`);
+			if (existing_track) {
+				while (frag.firstChild) {
+					existing_track.appendChild(frag.firstChild);
+				}
+			} else {
+				const new_track = document.createElement("div");
+				new_track.className = TRACK;
+				new_track.appendChild(frag);
+				left.appendChild(new_track);
+			}
+		});
+	}
+
 	function ensure_track(left) {
 		let track = left.querySelector(`:scope > .${TRACK}`);
 		if (track) {
 			return track;
+		}
+		const scroll = left.querySelector(`:scope > .${SCROLL}`);
+		if (scroll) {
+			track = scroll.querySelector(`:scope > .${TRACK}`);
+			if (track) {
+				return track;
+			}
 		}
 		return api.with_dom_mutation(() => {
 			track = document.createElement("div");
@@ -79,9 +265,121 @@ frappe.provide("ui_styles.list_scroll");
 		});
 	}
 
+	function collect_cols(left) {
+		const sticky = left.querySelector(`:scope > .${STICKY}`);
+		const track =
+			left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) ||
+			left.querySelector(`:scope > .${TRACK}`);
+		const cols = [];
+		if (sticky) {
+			cols.push(...sticky.querySelectorAll(":scope > .list-row-col"));
+		}
+		if (track) {
+			cols.push(...track.querySelectorAll(":scope > .list-row-col"));
+		}
+		return cols;
+	}
+
 	function get_cols(left) {
+		ensure_track(left);
+		const cols = collect_cols(left);
+		if (cols.length) {
+			return cols;
+		}
+		return Array.from(ensure_track(left).querySelectorAll(":scope > .list-row-col"));
+	}
+
+	function desired_sticky_n(cols, sticky_count) {
+		if (sticky_count <= 0 || cols.length <= 1) {
+			return 0;
+		}
+		const visible_idxs = [];
+		cols.forEach((col, i) => {
+			if (!col_is_hidden(col)) {
+				visible_idxs.push(i);
+			}
+		});
+		let n = Math.min(sticky_count, visible_idxs.length);
+		// Keep at least one column in the scroll zone when possible
+		if (visible_idxs.length > 1) {
+			n = Math.min(n, visible_idxs.length - 1);
+		}
+		return Math.max(0, n);
+	}
+
+	function current_sticky_n(left) {
+		const sticky = left.querySelector(`:scope > .${STICKY}`);
+		if (!sticky) {
+			return 0;
+		}
+		return sticky.querySelectorAll(":scope > .list-row-col").length;
+	}
+
+	/**
+	 * Move the first N visible .list-row-col into a sticky zone; the rest stay
+	 * in .list-hscroll-track inside .list-hscroll-scroll.
+	 * Skips DOM rebuild when the split already matches (preserves scrollLeft).
+	 */
+	function ensure_sticky_split(left, sticky_count) {
+		const existing_sticky = left.querySelector(`:scope > .${STICKY}`);
+		const existing_scroll = left.querySelector(`:scope > .${SCROLL}`);
+
+		if (sticky_count <= 0) {
+			if (existing_sticky || existing_scroll) {
+				unwrap_split(left);
+			}
+			return;
+		}
+
+		// Already split: only rebuild when sticky column count must change
+		if (existing_sticky && existing_scroll) {
+			const cols = collect_cols(left);
+			const n = desired_sticky_n(cols, sticky_count);
+			if (n <= 0) {
+				unwrap_split(left);
+				return;
+			}
+			if (current_sticky_n(left) === n) {
+				return;
+			}
+		}
+
+		unwrap_split(left);
 		const track = ensure_track(left);
-		return Array.from(track.querySelectorAll(":scope > .list-row-col"));
+		const all_cols = Array.from(track.querySelectorAll(":scope > .list-row-col"));
+		const n = desired_sticky_n(all_cols, sticky_count);
+		if (n <= 0) {
+			return;
+		}
+
+		const visible_idxs = [];
+		all_cols.forEach((col, i) => {
+			if (!col_is_hidden(col)) {
+				visible_idxs.push(i);
+			}
+		});
+		const sticky_idxs = new Set(visible_idxs.slice(0, n));
+		api.with_dom_mutation(() => {
+			const sticky = document.createElement("div");
+			sticky.className = STICKY;
+			const scroll = document.createElement("div");
+			scroll.className = SCROLL;
+			const new_track = document.createElement("div");
+			new_track.className = TRACK;
+
+			all_cols.forEach((col, i) => {
+				if (sticky_idxs.has(i)) {
+					sticky.appendChild(col);
+				} else {
+					new_track.appendChild(col);
+				}
+			});
+
+			track.remove();
+			scroll.appendChild(new_track);
+			left.appendChild(sticky);
+			left.appendChild(scroll);
+		});
 	}
 
 	function has_hide_class(class_str) {
@@ -159,45 +457,106 @@ frappe.provide("ui_styles.list_scroll");
 	}
 
 	function apply_pan(scope, scroll_left) {
-		const header = header_left(scope);
-		if (!header) {
+		const scroller = header_scroll_el(scope);
+		if (!scroller) {
 			return;
 		}
 
-		const header_track = header.querySelector(`:scope > .${TRACK}`);
-		if (header_track) {
-			header_track.style.transform = "";
-		}
-		if (header.scrollLeft !== scroll_left) {
-			syncing = true;
-			header.scrollLeft = scroll_left;
-			syncing = false;
-		}
-
-		// Same pixel offset on every row track (level-rights are equalized).
-		const pan = header.scrollLeft;
-		row_lefts(scope).forEach((left) => {
-			const track = left.querySelector(`:scope > .${TRACK}`);
-			if (!track) {
-				return;
+		api.with_dom_mutation(() => {
+			const header_track =
+				scroller.querySelector?.(`:scope > .${TRACK}`) ||
+				(scroller.classList?.contains(TRACK) ? scroller : null);
+			if (header_track) {
+				header_track.style.transform = "";
 			}
-			const max_pan = Math.max(0, track.offsetWidth - left.clientWidth);
-			track.style.transform = `translateX(${-Math.min(pan, max_pan)}px)`;
+
+			if (scroller.scrollLeft !== scroll_left) {
+				syncing = true;
+				scroller.scrollLeft = scroll_left;
+				syncing = false;
+			}
+
+			const pan = scroller.scrollLeft;
+			row_lefts(scope).forEach((left) => {
+				const track =
+					left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) ||
+					left.querySelector(`:scope > .${TRACK}`);
+				if (!track) {
+					return;
+				}
+				const scroll_host = track.parentElement?.classList?.contains(SCROLL)
+					? track.parentElement
+					: left;
+				const max_pan = Math.max(0, track.offsetWidth - scroll_host.clientWidth);
+				track.style.transform = `translateX(${-Math.min(pan, max_pan)}px)`;
+			});
 		});
 	}
 
+	function cap_sticky_count(scope, sticky_count, lefts) {
+		if (sticky_count <= 0) {
+			return 0;
+		}
+		const availables = lefts.map(left_available_width).filter((w) => w > 0);
+		if (!availables.length) {
+			return sticky_count;
+		}
+		const available = Math.min(...availables);
+		// Reduce N until sticky width leaves a usable scroll viewport (~80px)
+		let n = sticky_count;
+		while (n > 0) {
+			let sticky_w = 0;
+			const sample = lefts.find(is_effectively_visible) || lefts[0];
+			const cols = get_cols(sample);
+			let seen = 0;
+			for (const col of cols) {
+				if (col_is_hidden(col)) {
+					continue;
+				}
+				if (seen >= n) {
+					break;
+				}
+				sticky_w += Math.max(col.offsetWidth, 64) + COL_GAP;
+				seen += 1;
+			}
+			if (sticky_w <= available - 80 || n <= 1) {
+				break;
+			}
+			n -= 1;
+		}
+		return n;
+	}
+
 	function measure_column_widths(scope) {
+		const settings = resolve_settings(scope);
+		const list = apply_scope_classes(scope, settings);
+		if (!list || !settings.dense_list_layout) {
+			clear_dense_layout(list || get_list_el(scope));
+			return;
+		}
+
 		// In selection mode Frappe hides .list-header-subject (display:none) and
 		// shows .checkbox-actions. Still measure from visible row tracks so a
 		// list refresh (e.g. clearing a filter while rows stay checked) does not
 		// leave new rows without distributed column widths ("collapsed" gaps).
-		const lefts = all_lefts(scope).filter(is_effectively_visible);
+		// Split sticky/scroll on every left (incl. hidden header) so structure
+		// stays aligned when selection mode ends.
+		const all = all_lefts(list);
+		const lefts = all.filter(is_effectively_visible);
 		if (!lefts.length) {
 			return;
 		}
 
-		lefts.forEach(ensure_track);
-		equalize_level_rights(scope);
+		all.forEach((left) => ensure_track(left));
+		equalize_level_rights(list);
+
+		const scroller_before = header_scroll_el(list);
+		const saved_scroll = scroller_before ? scroller_before.scrollLeft : 0;
+
+		// Cap before splitting so we build the sticky zone once per measure
+		// (rebuilds wipe .list-hscroll-scroll scrollLeft).
+		let sticky_count = cap_sticky_count(list, settings.sticky_columns || 0, lefts);
+		all.forEach((left) => ensure_sticky_split(left, sticky_count));
 
 		const cols_by_row = lefts.map(get_cols).filter((cols) => cols.length);
 		if (!cols_by_row.length) {
@@ -253,9 +612,9 @@ frappe.provide("ui_styles.list_scroll");
 			participates[i] = true;
 		}
 
-		function track_size(box_widths) {
+		function track_size(box_widths, from_idx = 0) {
 			let sum = 0;
-			for (let i = 0; i < col_count; i++) {
+			for (let i = from_idx; i < col_count; i++) {
 				if (!participates[i]) {
 					continue;
 				}
@@ -271,6 +630,24 @@ frappe.provide("ui_styles.list_scroll");
 			return;
 		}
 		const available = Math.min(...positive_availables);
+
+		// Space left for the scrolling pane after sticky zone
+		let sticky_width = 0;
+		if (sticky_count > 0) {
+			let seen = 0;
+			for (let i = 0; i < col_count; i++) {
+				if (!participates[i]) {
+					continue;
+				}
+				if (seen >= sticky_count) {
+					break;
+				}
+				sticky_width += content_widths[i] + margins[i];
+				seen += 1;
+			}
+		}
+		const scroll_available = Math.max(0, available - sticky_width);
+
 		const participating = participates.filter(Boolean).length;
 		let total_min = track_size(content_widths);
 		let extra = available - total_min;
@@ -311,7 +688,27 @@ frappe.provide("ui_styles.list_scroll");
 			}
 		}
 
-		let track_width = Math.ceil(track_size(widths));
+		function scroll_track_width(box_widths) {
+			if (sticky_count <= 0) {
+				return Math.ceil(track_size(box_widths));
+			}
+			let seen = 0;
+			let start = 0;
+			for (let i = 0; i < col_count; i++) {
+				if (!participates[i]) {
+					continue;
+				}
+				if (seen === sticky_count) {
+					start = i;
+					break;
+				}
+				seen += 1;
+				start = i + 1;
+			}
+			return Math.ceil(track_size(box_widths, start));
+		}
+
+		let track_width = scroll_track_width(widths);
 
 		function apply_col_width(col, i) {
 			const content_w = content_widths[i];
@@ -337,8 +734,9 @@ frappe.provide("ui_styles.list_scroll");
 		});
 
 		// Keep widths on header even when it is later hidden in selection mode
-		all_lefts(scope).forEach((left) => {
-			const track = ensure_track(left);
+		all_lefts(list).forEach((left) => {
+			const track =
+				left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) || ensure_track(left);
 			track.style.width = `${track_width}px`;
 			track.style.minWidth = `${track_width}px`;
 			get_cols(left).forEach((col, i) => {
@@ -348,10 +746,12 @@ frappe.provide("ui_styles.list_scroll");
 
 		let actual_max = 0;
 		// Skip display:none header subject (selection mode) - offsetWidth is 0
-		all_lefts(scope)
+		all_lefts(list)
 			.filter(is_effectively_visible)
 			.forEach((left) => {
-				const track = left.querySelector(`:scope > .${TRACK}`);
+				const track =
+					left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) ||
+					left.querySelector(`:scope > .${TRACK}`);
 				if (!track) {
 					return;
 				}
@@ -362,31 +762,34 @@ frappe.provide("ui_styles.list_scroll");
 			});
 		if (actual_max > track_width) {
 			track_width = actual_max;
-			all_lefts(scope).forEach((left) => {
-				const track = left.querySelector(`:scope > .${TRACK}`);
+			all_lefts(list).forEach((left) => {
+				const track =
+					left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) ||
+					left.querySelector(`:scope > .${TRACK}`);
 				if (track) {
 					track.style.width = `${track_width}px`;
 					track.style.minWidth = `${track_width}px`;
 				}
 			});
 		}
-		if (actual_max > available + 1) {
+		const scroll_space = sticky_count > 0 ? scroll_available : available;
+		if (actual_max > scroll_space + 1) {
 			needs_scroll = true;
 		}
 
-		scope.querySelectorAll(".list-row-head").forEach((head) => {
+		list.querySelectorAll(".list-row-head").forEach((head) => {
 			head.classList.toggle(HAS_HSCROLL, needs_scroll);
 		});
 		// Apply floating once paging is visible; afterward only nudge the box
 		// (full unfix/reflow on every measure desyncs sticky header).
-		api.ensure_or_refresh_floating_paging?.(scope);
+		api.ensure_or_refresh_floating_paging?.(list);
 		api.apply_sticky_top?.();
 
-		const header = header_left(scope);
-		if (header && !needs_scroll) {
-			apply_pan(scope, 0);
-		} else if (header) {
-			apply_pan(scope, header.scrollLeft || 0);
+		const scroller = header_scroll_el(list);
+		if (scroller && !needs_scroll) {
+			apply_pan(list, 0);
+		} else if (scroller) {
+			apply_pan(list, saved_scroll);
 		}
 	}
 
@@ -419,11 +822,15 @@ frappe.provide("ui_styles.list_scroll");
 			if (!(source instanceof Element)) {
 				return;
 			}
-			if (!source.classList.contains("list-header-subject")) {
+			const is_header_subject = source.classList.contains("list-header-subject");
+			const is_header_scroll =
+				source.classList.contains(SCROLL) &&
+				source.parentElement?.classList.contains("list-header-subject");
+			if (!is_header_subject && !is_header_scroll) {
 				return;
 			}
 			const scope = get_scope(source);
-			if (!scope) {
+			if (!scope || !get_list_el(scope)?.classList.contains(CLASS_DENSE)) {
 				return;
 			}
 			apply_pan(scope, source.scrollLeft);
@@ -446,14 +853,18 @@ frappe.provide("ui_styles.list_scroll");
 				return;
 			}
 			const scope = get_scope(row_left);
-			const header = scope && header_left(scope);
-			if (!header || !scope.querySelector(`.list-row-head.${HAS_HSCROLL}`)) {
+			const list = scope && get_list_el(scope);
+			if (!list?.classList.contains(CLASS_DENSE)) {
+				return;
+			}
+			const scroller = header_scroll_el(list);
+			if (!scroller || !list.querySelector(`.list-row-head.${HAS_HSCROLL}`)) {
 				return;
 			}
 			event.preventDefault();
 			const delta = mostly_horizontal ? event.deltaX : event.deltaY;
-			header.scrollLeft += delta;
-			apply_pan(scope, header.scrollLeft);
+			scroller.scrollLeft += delta;
+			apply_pan(list, scroller.scrollLeft);
 		},
 		{ capture: true, passive: false }
 	);
@@ -480,6 +891,18 @@ frappe.provide("ui_styles.list_scroll");
 					if (scope && (header_left(scope) || row_lefts(scope).length)) {
 						scopes.add(scope);
 					}
+					continue;
+				}
+				// Pan / measure set inline widths and transforms - do not remasure
+				if (
+					mutation.attributeName === "style" &&
+					(el.classList.contains(TRACK) ||
+						el.classList.contains(STICKY) ||
+						el.classList.contains(SCROLL) ||
+						el.classList.contains("list-row-col") ||
+						el.classList.contains("level-right") ||
+						el.classList.contains("level-left"))
+				) {
 					continue;
 				}
 				if (

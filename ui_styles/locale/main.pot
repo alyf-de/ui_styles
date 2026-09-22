@@ -495,3 +495,54 @@ msgstr ""
 msgid "order_by field {0} on {1} is not a value field"
 msgstr ""
 
+#. Label of a Section Break field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Defaults"
+msgstr ""
+
+#. Label of a Section Break / Table field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "DocType Overrides"
+msgstr ""
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:39
+msgid "DocType {0} is listed more than once in DocType Overrides."
+msgstr ""
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:42
+msgid "Duplicate DocType"
+msgstr ""
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:51
+msgid "Invalid Value"
+msgstr ""
+
+#. Name of a DocType
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+msgid "List Scroll DocType Setting"
+msgstr ""
+
+#. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Number of leading list columns that stay fixed while scrolling horizontally. Applies to all lists unless overridden below."
+msgstr ""
+
+#. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll DocType Setting'
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+msgid "Number of leading list columns that stay fixed while scrolling horizontally."
+msgstr ""
+
+#. Label of an Int field in DocType 'List Scroll Settings' / 'List Scroll DocType Setting'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+msgid "Sticky Columns"
+msgstr ""
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:51
+msgid "Sticky Columns cannot be negative."
+msgstr ""
+
+#. Description of the 'DocType Overrides' (Table) field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "When a DocType has a row here, that row fully replaces the Defaults for its list view."
+msgstr ""

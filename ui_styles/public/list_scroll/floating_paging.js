@@ -1,8 +1,8 @@
 /**
  * Floating list paging bar fixed over the list at the natural bottom inset.
  *
- * Gated by List Scroll Settings → Floating List Paging
- * (frappe.boot.list_scroll.floating_list_paging). Requires dense layout.
+ * Per-list gate: .frappe-list.list-floating-paging (requires dense on that list).
+ * Registers whenever list_scroll.any_dense is on; no-ops for lists without floating.
  *
  * Exposes on ui_styles.list_scroll: ensure_or_refresh_floating_paging,
  * layout_all_floating_paging, reset_floating_inset (called from list_scroll_sync.js).
@@ -10,18 +10,15 @@
 frappe.provide("ui_styles.list_scroll");
 
 (() => {
-	if (!frappe.boot?.list_scroll?.dense_list_layout) {
-		return;
-	}
-	if (!frappe.boot.list_scroll.floating_list_paging) {
+	if (!frappe.boot?.list_scroll?.any_dense) {
 		return;
 	}
 
 	const api = ui_styles.list_scroll;
-	document.documentElement.classList.add("list-floating-paging");
 
 	const PAGING_FLOAT = "list-paging-floating";
 	const PAGING_SPACER = "list-paging-spacer";
+	const CLASS_FLOATING = "list-floating-paging";
 
 	// Per paging element: a shared module inset would mis-place later lists
 	// when several .frappe-list areas are visible at different document positions.
@@ -77,8 +74,14 @@ frappe.provide("ui_styles.list_scroll");
 						? scope
 						: scope.querySelector?.(".frappe-list"),
 			  ].filter(Boolean)
-			: Array.from(document.querySelectorAll(".frappe-list"));
+			: Array.from(document.querySelectorAll(`.frappe-list.${CLASS_FLOATING}`));
 		lists.forEach((list) => {
+			if (!list.classList.contains(CLASS_FLOATING)) {
+				list.querySelectorAll(`:scope > .list-paging-area.${PAGING_FLOAT}`).forEach(
+					clear_floating_paging
+				);
+				return;
+			}
 			list.querySelectorAll(`:scope > .list-paging-area.${PAGING_FLOAT}`).forEach(
 				(paging) => {
 					const host = paging.closest(".layout-main-section") || list;
@@ -98,6 +101,10 @@ frappe.provide("ui_styles.list_scroll");
 			? scope
 			: scope?.querySelector?.(".frappe-list");
 		if (!list) {
+			return;
+		}
+		if (!list.classList.contains(CLASS_FLOATING)) {
+			list.querySelectorAll(":scope > .list-paging-area").forEach(clear_floating_paging);
 			return;
 		}
 		list.querySelectorAll(":scope > .list-paging-area").forEach((paging) => {
@@ -146,6 +153,10 @@ frappe.provide("ui_styles.list_scroll");
 			? scope
 			: scope?.querySelector?.(".frappe-list");
 		if (!list) {
+			return;
+		}
+		if (!list.classList.contains(CLASS_FLOATING)) {
+			list.querySelectorAll(":scope > .list-paging-area").forEach(clear_floating_paging);
 			return;
 		}
 		const paging = list.querySelector(":scope > .list-paging-area");

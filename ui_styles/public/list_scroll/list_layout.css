@@ -1,19 +1,19 @@
 /**
  * Denser Desk list columns with a horizontally scrollable header track.
  *
- * Enabled via List Scroll Settings → Dense List Layout (html.list-layout-dense).
- * Sticky header via Sticky List Header (html.list-sticky-header).
- * Floating paging via Floating List Paging (html.list-floating-paging).
+ * Enabled per list via List Scroll Settings (class list-layout-dense on
+ * .frappe-list). Sticky header / floating paging / sticky columns are
+ * also scoped to the list (and its layout-main-section when needed).
  *
  * Column tracks (.list-hscroll-track) are panned together via JS transform.
- * Only the header .level-left scrolls natively (visible scrollbar).
+ * With sticky columns, the header scrollbar lives on .list-hscroll-scroll.
  * Header/row .level-right widths are equalized in JS so pans stay aligned.
  *
  * !important: desk.bundle sets .list-row .level-left { flex:4; min-width:80% }
  * and .level-right { flex:1 }, which leaves a dead band before the timestamp.
  */
-html.list-layout-dense .list-row .list-row-col,
-html.list-layout-dense .list-row-head .list-row-col {
+.frappe-list.list-layout-dense .list-row .list-row-col,
+.frappe-list.list-layout-dense .list-row-head .list-row-col {
 	flex: 0 0 auto;
 	width: auto;
 	min-width: 0;
@@ -23,23 +23,55 @@ html.list-layout-dense .list-row-head .list-row-col {
 	box-sizing: border-box;
 }
 
-html.list-layout-dense .list-row .list-row-col.list-col-measure,
-html.list-layout-dense .list-row-head .list-row-col.list-col-measure {
+.frappe-list.list-layout-dense .list-row .list-row-col.list-col-measure,
+.frappe-list.list-layout-dense .list-row-head .list-row-col.list-col-measure {
 	overflow: visible !important;
 	max-width: none !important;
 	width: auto !important;
 	min-width: 0 !important;
 }
 
-html.list-layout-dense .list-hscroll-track {
+.frappe-list.list-layout-dense .list-hscroll-track,
+.frappe-list.list-layout-dense .list-hscroll-sticky {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	flex: 0 0 auto;
 }
 
-html.list-layout-dense .list-row,
-html.list-layout-dense .list-row-head {
+.frappe-list.list-layout-dense .list-hscroll-scroll {
+	display: block;
+	flex: 1 1 0%;
+	min-width: 0;
+	max-width: 100%;
+	overflow: hidden;
+}
+
+.frappe-list.list-layout-dense .list-hscroll-sticky {
+	position: relative;
+	/* Above sibling .list-hscroll-scroll in the same row only; keep below
+	 * .list-row-head (z-index 3) so vertical sticky header stays on top. */
+	z-index: 1;
+	flex: 0 0 auto;
+}
+
+/* Inherit .list-row-head background (var(--subtle-fg), incl. Desk Background retints) */
+.frappe-list.list-layout-dense .list-row-head .list-hscroll-sticky {
+	background-color: inherit;
+}
+
+/* Rows are transparent over the card; sticky must paint the card, then hover/focus */
+.frappe-list.list-layout-dense .list-row .list-hscroll-sticky {
+	background-color: var(--card-bg);
+}
+
+.frappe-list.list-layout-dense .list-row:hover .list-hscroll-sticky,
+.frappe-list.list-layout-dense .list-row-container:focus .list-row .list-hscroll-sticky {
+	background-color: var(--highlight-color);
+}
+
+.frappe-list.list-layout-dense .list-row,
+.frappe-list.list-layout-dense .list-row-head {
 	justify-content: flex-start !important;
 	align-items: center !important;
 	gap: 0;
@@ -55,37 +87,37 @@ html.list-layout-dense .list-row-head {
  * Do not unhide columns Frappe collapsed with .hide (Tag / Etikett until
  * "Show Tags") in header, rows, or any footer.
  */
-html.list-layout-dense .list-row-col.hidden-xs:not(.hide) {
+.frappe-list.list-layout-dense .list-row-col.hidden-xs:not(.hide) {
 	display: flex !important;
 }
 
-html.list-layout-dense .list-row-col.hide {
+.frappe-list.list-layout-dense .list-row-col.hide {
 	display: none !important;
 }
 
 /* Frappe .list-row .tag-col { margin-left:10px; min-width:125px } extra chrome
  * pushes the last column under .level-right when tags are shown. */
-html.list-layout-dense .list-row .tag-col,
-html.list-layout-dense .list-row-head .tag-col {
+.frappe-list.list-layout-dense .list-row .tag-col,
+.frappe-list.list-layout-dense .list-row-head .tag-col {
 	margin-left: 0;
 	min-width: 0;
 }
 
-html.list-layout-dense .frappe-list .result {
+.frappe-list.list-layout-dense .result {
 	max-width: 100%;
 }
 
 /*
  * Sticky needs a non-clipping ancestor. Frappe's card uses overflow:hidden,
  * which would pin the header to the card instead of the viewport.
- * Gated by List Scroll Settings → Sticky List Header (html.list-sticky-header).
+ * Class list-scroll-sticky-section is set by JS on the list's layout card.
  */
-html.list-layout-dense.list-sticky-header .layout-main-section.frappe-card {
+.layout-main-section.frappe-card.list-scroll-sticky-section {
 	overflow: visible;
 }
 
-html.list-layout-dense .list-row .level-left,
-html.list-layout-dense .list-row-head .level-left {
+.frappe-list.list-layout-dense .list-row .level-left,
+.frappe-list.list-layout-dense .list-row-head .level-left {
 	flex: 1 1 0% !important;
 	min-width: 0 !important;
 	max-width: none !important;
@@ -93,8 +125,8 @@ html.list-layout-dense .list-row-head .level-left {
 	align-items: center;
 }
 
-html.list-layout-dense .list-row .level-right,
-html.list-layout-dense .list-row-head .level-right {
+.frappe-list.list-layout-dense .list-row .level-right,
+.frappe-list.list-layout-dense .list-row-head .level-right {
 	/* flex/width/min-width also set by JS to equalize header vs row meta */
 	flex: 0 0 auto !important;
 	flex-grow: 0 !important;
@@ -105,7 +137,7 @@ html.list-layout-dense .list-row-head .level-right {
 }
 
 /* Default header: compact, vertically centered */
-html.list-layout-dense .list-row-head {
+.frappe-list.list-layout-dense .list-row-head {
 	height: 30px;
 	min-height: 30px;
 	overflow: hidden;
@@ -119,14 +151,16 @@ html.list-layout-dense .list-row-head {
  * JS sets style.top from page-head.getBoundingClientRect().bottom each frame
  * while page-head tucks/untucks (Desk: throttle 500ms + transition 0.5s top).
  *
- * z-index stays low (1): only needs to cover scrolling rows. Filter-bar
- * overlays (.page-form) must win as a sibling stacking context - raising
- * dropdown/awesomplete z-index alone is not enough when compositing sticky.
+ * z-index 3: above row .list-hscroll-sticky (z-index 1) so sticky front
+ * columns in the header are not covered by scrolling row content.
+ * Filter-bar overlays (.page-form) must still win as a sibling stacking
+ * context (z-index 2 on .page-form is not enough when head is 3 - elevate
+ * page-form to 4 below).
  */
-html.list-layout-dense.list-sticky-header .list-row-head {
+.frappe-list.list-layout-dense.list-sticky-header .list-row-head {
 	position: sticky;
 	top: var(--navbar-height); /* fallback until JS measures */
-	z-index: 1;
+	z-index: 3;
 	/* Do not set background here: Frappe .list-row-head uses --subtle-fg;
 	 * Desk Background retints via --navbar-bg. Re-declaring --subtle-fg
 	 * would win on specificity and leave the sticky header untinted.
@@ -138,22 +172,22 @@ html.list-layout-dense.list-sticky-header .list-row-head {
  * Elevate the whole filter bar (standard filters + .sort-selector) so its
  * overlays paint above the sticky column header.
  */
-html.list-layout-dense.list-sticky-header .layout-main-section > .page-form {
+.layout-main-section.list-scroll-sticky-section > .page-form {
 	position: relative;
-	z-index: 2;
+	z-index: 4;
 }
 
-html.list-layout-dense.list-sticky-header .page-form .sort-selector {
+.layout-main-section.list-scroll-sticky-section .page-form .sort-selector {
 	position: relative;
-	z-index: 2;
+	z-index: 4;
 }
 
-html.list-layout-dense.list-sticky-header .page-form .sort-selector .dropdown-menu {
-	z-index: 3;
+.layout-main-section.list-scroll-sticky-section .page-form .sort-selector .dropdown-menu {
+	z-index: 5;
 }
 
 /* Header is the only native horizontal scroller */
-html.list-layout-dense .list-row-head .level-left.list-header-subject {
+.frappe-list.list-layout-dense .list-row-head .level-left.list-header-subject {
 	overflow-x: hidden;
 	overflow-y: hidden;
 	height: 100%;
@@ -166,7 +200,7 @@ html.list-layout-dense .list-row-head .level-left.list-header-subject {
  * align-items must be flex-start (not stretch), or the track is forced to the
  * container width and horizontal overflow never appears.
  */
-html.list-layout-dense .list-row-head.list-has-hscroll {
+.frappe-list.list-layout-dense .list-row-head.list-has-hscroll {
 	height: 42px;
 	min-height: 42px;
 	align-items: stretch !important;
@@ -176,22 +210,33 @@ html.list-layout-dense .list-row-head.list-has-hscroll {
 	padding-bottom: 0 !important;
 }
 
-html.list-layout-dense .list-row-head.list-has-hscroll .level-left.list-header-subject {
+.frappe-list.list-layout-dense .list-row-head.list-has-hscroll .level-left.list-header-subject {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
 	align-items: flex-start;
 	align-self: stretch;
 	height: 42px;
 	max-height: 42px;
-	overflow-x: auto;
+	overflow-x: hidden;
 	overflow-y: hidden;
 	box-sizing: border-box;
+}
+
+/* No sticky split: whole header left scrolls (legacy single-track layout) */
+.frappe-list.list-layout-dense
+	.list-row-head.list-has-hscroll
+	.level-left.list-header-subject:not(:has(> .list-hscroll-scroll)) {
+	overflow-x: auto;
+	flex-direction: column;
 	scrollbar-width: thin;
 }
 
-html.list-layout-dense .list-row-head.list-has-hscroll .level-left.list-header-subject > .list-hscroll-track {
+.frappe-list.list-layout-dense
+	.list-row-head.list-has-hscroll
+	.level-left.list-header-subject:not(:has(> .list-hscroll-scroll))
+	> .list-hscroll-track {
 	height: 36px;
 	min-height: 36px;
 	max-height: 36px;
@@ -200,7 +245,44 @@ html.list-layout-dense .list-row-head.list-has-hscroll .level-left.list-header-s
 	align-items: center;
 }
 
-html.list-layout-dense .list-row-head.list-has-hscroll .level-right {
+/* Sticky split: scrollbar on the scroll pane only */
+.frappe-list.list-layout-dense
+	.list-row-head.list-has-hscroll
+	.level-left.list-header-subject
+	> .list-hscroll-scroll {
+	display: block;
+	align-self: stretch;
+	height: 42px;
+	max-height: 42px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scrollbar-width: thin;
+}
+
+.frappe-list.list-layout-dense
+	.list-row-head.list-has-hscroll
+	.level-left.list-header-subject
+	> .list-hscroll-sticky {
+	height: 36px;
+	min-height: 36px;
+	max-height: 36px;
+	align-self: flex-start;
+}
+
+.frappe-list.list-layout-dense
+	.list-row-head.list-has-hscroll
+	.level-left.list-header-subject
+	> .list-hscroll-scroll
+	> .list-hscroll-track {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 36px;
+	min-height: 36px;
+	max-height: 36px;
+}
+
+.frappe-list.list-layout-dense .list-row-head.list-has-hscroll .level-right {
 	/* Match the 36px label band on the left (not the full 42px with scrollbar) */
 	align-self: flex-start;
 	height: 36px;
@@ -215,32 +297,47 @@ html.list-layout-dense .list-row-head.list-has-hscroll .level-right {
  * selection row via its .list-subject child (do not force display:flex on
  * the parent - that would fight display:none when nothing is selected).
  */
-html.list-layout-dense .list-row-head .level-left.checkbox-actions .level.list-subject {
+.frappe-list.list-layout-dense .list-row-head .level-left.checkbox-actions .level.list-subject {
 	display: flex;
 	align-items: center;
 	height: 30px;
 }
 
-html.list-layout-dense .list-row-head.list-has-hscroll .level-left.checkbox-actions .level.list-subject {
+.frappe-list.list-layout-dense
+	.list-row-head.list-has-hscroll
+	.level-left.checkbox-actions
+	.level.list-subject {
 	/* Same 36px label band as the column header (above the 6px scrollbar) */
 	height: 36px;
 }
 
-html.list-layout-dense .list-row-head .level-left.list-header-subject::-webkit-scrollbar {
+.frappe-list.list-layout-dense .list-row-head .level-left.list-header-subject::-webkit-scrollbar,
+.frappe-list.list-layout-dense
+	.list-row-head
+	.level-left.list-header-subject
+	> .list-hscroll-scroll::-webkit-scrollbar {
 	height: 6px;
 }
 
-html.list-layout-dense .list-row-head .level-left.list-header-subject::-webkit-scrollbar-track {
+.frappe-list.list-layout-dense .list-row-head .level-left.list-header-subject::-webkit-scrollbar-track,
+.frappe-list.list-layout-dense
+	.list-row-head
+	.level-left.list-header-subject
+	> .list-hscroll-scroll::-webkit-scrollbar-track {
 	background: transparent;
 }
 
-html.list-layout-dense .list-row-head .level-left.list-header-subject::-webkit-scrollbar-thumb {
+.frappe-list.list-layout-dense .list-row-head .level-left.list-header-subject::-webkit-scrollbar-thumb,
+.frappe-list.list-layout-dense
+	.list-row-head
+	.level-left.list-header-subject
+	> .list-hscroll-scroll::-webkit-scrollbar-thumb {
 	background-color: var(--gray-400);
 	border-radius: 3px;
 }
 
-html.list-layout-dense .list-row .level-left .ellipsis,
-html.list-layout-dense .list-row-head .level-left .ellipsis {
+.frappe-list.list-layout-dense .list-row .level-left .ellipsis,
+.frappe-list.list-layout-dense .list-row-head .level-left .ellipsis {
 	text-overflow: clip;
 }
 
@@ -249,7 +346,7 @@ html.list-layout-dense .list-row-head .level-left .ellipsis {
  * JS sets left/width/bottom to match the list card and the natural gap
  * below the paging area at the end of the document.
  */
-html.list-layout-dense.list-floating-paging .list-paging-area.list-paging-floating {
+.frappe-list.list-layout-dense.list-floating-paging .list-paging-area.list-paging-floating {
 	position: fixed;
 	z-index: 5;
 	margin: 0;
@@ -258,7 +355,7 @@ html.list-layout-dense.list-floating-paging .list-paging-area.list-paging-floati
 	border-top: 1px solid var(--border-color);
 }
 
-html.list-layout-dense.list-floating-paging .list-paging-spacer {
+.frappe-list.list-layout-dense.list-floating-paging .list-paging-spacer {
 	flex-shrink: 0;
 	pointer-events: none;
 }

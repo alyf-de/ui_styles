@@ -1,8 +1,8 @@
 /**
  * Sticky list column header under page head (tracks Desk tuck/untuck).
  *
- * Gated by List Scroll Settings → Sticky List Header
- * (frappe.boot.list_scroll.sticky_list_header). Requires dense layout.
+ * Per-list gate: .frappe-list.list-sticky-header (requires dense on that list).
+ * Registers whenever list_scroll.any_dense is on; no-ops for lists without sticky.
  *
  * Exposes on ui_styles.list_scroll: apply_sticky_top, watch_page_head,
  * follow_page_head_top (called from list_scroll_sync.js).
@@ -10,15 +10,11 @@
 frappe.provide("ui_styles.list_scroll");
 
 (() => {
-	if (!frappe.boot?.list_scroll?.dense_list_layout) {
-		return;
-	}
-	if (!frappe.boot.list_scroll.sticky_list_header) {
+	if (!frappe.boot?.list_scroll?.any_dense) {
 		return;
 	}
 
 	const api = ui_styles.list_scroll;
-	document.documentElement.classList.add("list-sticky-header");
 
 	// Desk throttles page-head tuck at 500ms then transitions top for 0.5s
 	const PAGE_HEAD_TOP_MS = 1000;
@@ -55,8 +51,8 @@ frappe.provide("ui_styles.list_scroll");
 	}
 
 	/**
-	 * Pin list headers to the live bottom edge of .page-head.flex (and never
-	 * above .sticky-top). Tracks page-head while Desk animates top on tuck.
+	 * Pin sticky list headers to the live bottom edge of .page-head.flex (and
+	 * never above .sticky-top). Tracks page-head while Desk animates top on tuck.
 	 */
 	function apply_list_head_sticky_top() {
 		const sticky = document.querySelector(".sticky-top");
@@ -70,10 +66,18 @@ frappe.provide("ui_styles.list_scroll");
 		}
 		const top_px = `${Math.round(top)}px`;
 		document
-			.querySelectorAll(".frappe-list .list-row-head, .list-row-head")
+			.querySelectorAll(".frappe-list.list-sticky-header .list-row-head")
 			.forEach((head) => {
 				if (head.style.top !== top_px) {
 					head.style.top = top_px;
+				}
+			});
+		// Clear leftover top on lists that no longer use sticky header
+		document
+			.querySelectorAll(".frappe-list:not(.list-sticky-header) .list-row-head")
+			.forEach((head) => {
+				if (head.style.top) {
+					head.style.removeProperty("top");
 				}
 			});
 	}
