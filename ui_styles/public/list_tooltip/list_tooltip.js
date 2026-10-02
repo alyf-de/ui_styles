@@ -43,9 +43,9 @@ $(() => {
 
 	function get_popover() {
 		if (!$popover || !$popover.length) {
-			$popover = $('<div class="list-tooltip-popover" style="display:none;"></div>').appendTo(
-				"body"
-			);
+			$popover = $(
+				'<div class="list-tooltip-popover" style="display:none;"></div>'
+			).appendTo("body");
 		}
 		return $popover;
 	}
