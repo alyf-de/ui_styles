@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "creation": "2026-10-02 16:06:42.015575",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "configurations_section",
+  "configurations"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Show an info icon in configured list views that previews fields on hover.",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "depends_on": "enabled",
+   "fieldname": "configurations_section",
+   "fieldtype": "Section Break",
+   "label": "Configurations"
+  },
+  {
+   "description": "One row per DocType. If a DocType appears more than once, the first row is used.",
+   "fieldname": "configurations",
+   "fieldtype": "Table",
+   "label": "Configurations",
+   "options": "List Tooltip Configuration"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-02 16:25:08.503766",
+ "modified_by": "Administrator",
+ "module": "List Tooltip",
+ "name": "List Tooltip Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

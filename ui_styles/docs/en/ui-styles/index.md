@@ -14,3 +14,4 @@ Open the **UI Styles** workspace (System Manager) for settings pages.
 - [Doc Table](/app/docs/en/ui-styles/doc-table) - fieldtype that lists related real DocTypes on a form
 - [Desk Background](/app/docs/en/ui-styles/desk-background) - opt-in Desk background tint
 - [List Scroll](/app/docs/en/ui-styles/list-scroll) - opt-in dense Desk list layout
+- [List Tooltip](/app/docs/en/ui-styles/list-tooltip) - opt-in field preview when hovering a list row
