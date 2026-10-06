@@ -19,6 +19,10 @@ Opt-in Desk background tint. See `ui_styles/desk_background/README.md`.
 
 Opt-in dense Desk list layout with a shared horizontal scrollbar. See `ui_styles/list_scroll/README.md`.
 
+#### List Tooltip
+
+Opt-in hover preview in list views: an info icon shows configured fields of a row. See `ui_styles/list_tooltip/README.md`.
+
 ### Installation
 
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:

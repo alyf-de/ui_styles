@@ -548,3 +548,79 @@ msgstr "Fixierte Spalten dürfen nicht negativ sein."
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
 msgid "When a DocType has a row here, that row fully replaces the Defaults for its list view."
 msgstr "Wenn ein DocType hier eine Zeile hat, ersetzt diese Zeile die Standardeinstellungen für dessen Listenansicht vollständig."
+
+#: ui_styles/public/list_tooltip/list_tooltip.js
+msgid "(no content)"
+msgstr "(kein Inhalt)"
+
+#. Label of a Small Text field in DocType 'List Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Body Fields"
+msgstr "Textfelder"
+
+#. Label of a Int field in DocType 'List Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Body Max Lines"
+msgstr "Max. Textzeilen"
+
+#. Description of the 'Body Fields' (Small Text) field in DocType 'List
+#. Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Comma-separated fieldnames shown as a text block. The first non-empty field is used."
+msgstr "Kommagetrennte Feldnamen, die als Textblock angezeigt werden. Das erste nicht leere Feld wird verwendet."
+
+#. Description of the 'Header Fields' (Small Text) field in DocType 'List
+#. Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Comma-separated fieldnames shown as label / value rows."
+msgstr "Kommagetrennte Feldnamen, die als Zeilen aus Bezeichnung und Wert angezeigt werden."
+
+#. Label of a Table field in DocType 'List Tooltip Settings'
+#. Label of a Section Break field in DocType 'List Tooltip Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "Configurations"
+msgstr "Konfigurationen"
+
+#. Label of a Small Text field in DocType 'List Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Header Fields"
+msgstr "Kopfzeilenfelder"
+
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py
+msgid "Invalid Field"
+msgstr "Ungültiges Feld"
+
+#. Name of a DocType
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "List Tooltip Configuration"
+msgstr "Listen-Tooltip Konfiguration"
+
+#. Name of a DocType
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "List Tooltip Settings"
+msgstr "Listen-Tooltip Einstellungen"
+
+#. Description of the 'Configurations' (Table) field in DocType 'List Tooltip
+#. Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "One row per DocType. If a DocType appears more than once, the first row is used."
+msgstr "Eine Zeile pro DocType. Kommt ein DocType mehrfach vor, wird die erste Zeile verwendet."
+
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py
+msgid "Row #{0}: Body Max Lines must be at least 1."
+msgstr "Zeile #{0}: Max. Textzeilen muss mindestens 1 sein."
+
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py
+msgid "Reload the Desk (hard refresh) to apply List Tooltip Settings changes."
+msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Listen-Tooltip Einstellungen anzuwenden."
+
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py
+msgid "Row #{0}: {1} is not a field of {2} that can be shown in a list."
+msgstr "Zeile #{0}: {1} ist kein Feld von {2}, das in einer Liste angezeigt werden kann."
+
+#. Description of the 'Enabled' (Check) field in DocType 'List Tooltip
+#. Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "Show an info icon in configured list views that previews fields on hover."
+msgstr "Zeigt in konfigurierten Listenansichten ein Info-Symbol, das beim Überfahren Felder als Vorschau anzeigt."
