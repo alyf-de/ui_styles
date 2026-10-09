@@ -62,9 +62,7 @@ ui_styles.doc_table.parse_link_from_options = function (value) {
 	function register_client_fieldtype() {
 		if (!frappe.model.all_fieldtypes.includes(ui_styles.doc_table.FIELDTYPE)) {
 			frappe.model.all_fieldtypes.push(ui_styles.doc_table.FIELDTYPE);
-			frappe.model.all_fieldtypes.sort((a, b) =>
-				a.toLowerCase().localeCompare(b.toLowerCase())
-			);
+			frappe.model.all_fieldtypes.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 		}
 		if (!frappe.model.no_value_type.includes(ui_styles.doc_table.FIELDTYPE)) {
 			frappe.model.no_value_type.push(ui_styles.doc_table.FIELDTYPE);
@@ -98,19 +96,13 @@ frappe.ui.form.ControlDocTable = class ControlDocTable extends frappe.ui.form.Co
 		this.$label_text = this.$header.find(".control-label");
 		this.$toolbar = this.$header.find(".doc-table-toolbar");
 		// Same shell as child tables (ControlTable / form-grid).
-		this.$grid_container = $('<div class="form-grid-container"></div>').appendTo(
-			this.$wrapper
-		);
-		this.$grid = $('<div class="form-grid doc-table-grid"></div>').appendTo(
-			this.$grid_container
-		);
+		this.$grid_container = $('<div class="form-grid-container"></div>').appendTo(this.$wrapper);
+		this.$grid = $('<div class="form-grid doc-table-grid"></div>').appendTo(this.$grid_container);
 		this.$footer = $(
 			`<div class="doc-table-footer flex align-items-center justify-between">
 				<span class="text-muted small doc-table-status"></span>
 				<div class="doc-table-footer-actions flex align-items-center">
-					<button class="btn btn-xs btn-default doc-table-load-more" type="button">${__(
-						"Load More"
-					)}</button>
+					<button class="btn btn-xs btn-default doc-table-load-more" type="button">${__("Load More")}</button>
 					<div class="doc-table-pager btn-group" role="group">
 						<button class="btn btn-secondary btn-xs doc-table-prev-page" type="button" title="${__(
 							"Previous"
@@ -129,9 +121,7 @@ frappe.ui.form.ControlDocTable = class ControlDocTable extends frappe.ui.form.Co
 		this.$pager = this.$footer.find(".doc-table-pager");
 		this.$prev_btn = this.$footer.find(".doc-table-prev-page");
 		this.$next_btn = this.$footer.find(".doc-table-next-page");
-		this.$empty = $(
-			`<div class="text-muted small doc-table-empty">${__("No linked documents")}</div>`
-		)
+		this.$empty = $(`<div class="text-muted small doc-table-empty">${__("No linked documents")}</div>`)
 			.appendTo(this.$wrapper)
 			.hide();
 		this.$error = $('<div class="text-danger small doc-table-error"></div>')
@@ -224,8 +214,7 @@ frappe.ui.form.ControlDocTable = class ControlDocTable extends frappe.ui.form.Co
 
 	apply_paging_settings(data) {
 		this._page_size = cint(data.page_size) || ui_styles.doc_table.DEFAULT_PAGE_SIZE;
-		this._page_size_max =
-			cint(data.page_size_max) || ui_styles.doc_table.DEFAULT_PAGE_SIZE_MAX;
+		this._page_size_max = cint(data.page_size_max) || ui_styles.doc_table.DEFAULT_PAGE_SIZE_MAX;
 		this._visible_rows = cint(data.visible_rows) || ui_styles.doc_table.DEFAULT_VISIBLE_ROWS;
 		this._pagination = data.pagination || ui_styles.doc_table.DEFAULT_PAGINATION;
 	}
@@ -460,9 +449,7 @@ frappe.ui.form.ControlDocTable = class ControlDocTable extends frappe.ui.form.Co
 		if (["Check"].includes(fieldtype)) {
 			return 1;
 		}
-		if (
-			["Int", "Float", "Percent", "Currency", "Date", "Datetime", "Time"].includes(fieldtype)
-		) {
+		if (["Int", "Float", "Percent", "Currency", "Date", "Datetime", "Time"].includes(fieldtype)) {
 			return 2;
 		}
 		if (["Select", "Color", "Rating"].includes(fieldtype)) {
@@ -533,8 +520,8 @@ frappe.ui.form.ControlDocTable = class ControlDocTable extends frappe.ui.form.Co
 		const fieldname = col.id;
 		const docname = (doc && doc.name) || "";
 		const is_link = this.is_doc_link_column(col, table_meta);
-		let html = "";
-		let title = "";
+		let html;
+		let title;
 
 		if (fieldname === "name") {
 			title = value || docname || "";
@@ -580,9 +567,7 @@ frappe.ui.form.ControlDocTable = class ControlDocTable extends frappe.ui.form.Co
 		if (is_link && docname) {
 			html = `<a href="/app/${frappe.router.slug(table_meta.doctype)}/${encodeURIComponent(
 				docname
-			)}" class="doc-table-link" data-name="${frappe.utils.escape_html(
-				docname
-			)}">${html}</a>`;
+			)}" class="doc-table-link" data-name="${frappe.utils.escape_html(docname)}">${html}</a>`;
 		}
 
 		if (title) {

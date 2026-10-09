@@ -121,10 +121,7 @@ frappe.provide("ui_styles.list_scroll");
 
 		const section = list.closest(".layout-main-section");
 		if (section) {
-			section.classList.toggle(
-				CLASS_STICKY_SECTION,
-				dense && Boolean(settings.sticky_list_header)
-			);
+			section.classList.toggle(CLASS_STICKY_SECTION, dense && Boolean(settings.sticky_list_header));
 		}
 		return list;
 	}
@@ -268,8 +265,7 @@ frappe.provide("ui_styles.list_scroll");
 	function collect_cols(left) {
 		const sticky = left.querySelector(`:scope > .${STICKY}`);
 		const track =
-			left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) ||
-			left.querySelector(`:scope > .${TRACK}`);
+			left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) || left.querySelector(`:scope > .${TRACK}`);
 		const cols = [];
 		if (sticky) {
 			cols.push(...sticky.querySelectorAll(":scope > .list-row-col"));
@@ -662,10 +658,7 @@ frappe.provide("ui_styles.list_scroll");
 			content_widths[subject_idx] > available * 0.7
 		) {
 			const other_min = total_min - content_widths[subject_idx];
-			const subject_cap = Math.max(
-				96,
-				Math.floor(available - Math.min(other_min, available * 0.45))
-			);
+			const subject_cap = Math.max(96, Math.floor(available - Math.min(other_min, available * 0.45)));
 			content_widths[subject_idx] = Math.min(content_widths[subject_idx], subject_cap);
 			widths[subject_idx] = content_widths[subject_idx];
 			total_min = track_size(content_widths);
@@ -735,8 +728,7 @@ frappe.provide("ui_styles.list_scroll");
 
 		// Keep widths on header even when it is later hidden in selection mode
 		all_lefts(list).forEach((left) => {
-			const track =
-				left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) || ensure_track(left);
+			const track = left.querySelector(`:scope > .${SCROLL} > .${TRACK}`) || ensure_track(left);
 			track.style.width = `${track_width}px`;
 			track.style.minWidth = `${track_width}px`;
 			get_cols(left).forEach((col, i) => {

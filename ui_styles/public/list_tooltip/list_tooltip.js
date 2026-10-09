@@ -43,9 +43,7 @@ $(() => {
 
 	function get_popover() {
 		if (!$popover || !$popover.length) {
-			$popover = $(
-				'<div class="list-tooltip-popover" style="display:none;"></div>'
-			).appendTo("body");
+			$popover = $('<div class="list-tooltip-popover" style="display:none;"></div>').appendTo("body");
 		}
 		return $popover;
 	}
@@ -98,9 +96,7 @@ $(() => {
 		const rows = cfg.header_fields.map((fieldname) => {
 			const label = __(get_df(doctype, fieldname).label);
 			const value = format_value(doctype, doc, fieldname);
-			return `<tr><td>${escape_html(label)}</td><td><strong>${escape_html(
-				value
-			)}</strong></td></tr>`;
+			return `<tr><td>${escape_html(label)}</td><td><strong>${escape_html(value)}</strong></td></tr>`;
 		});
 		const table = rows.length ? `<table>${rows.join("")}</table>` : "";
 
@@ -116,9 +112,7 @@ $(() => {
 		const raw = cfg.body_fields.map((f) => doc[f]).find((v) => v && String(v).trim());
 		const text = html_to_text(raw);
 		if (!text) {
-			return `<div class="list-tooltip-body"><span class="muted">${__(
-				"(no content)"
-			)}</span></div>`;
+			return `<div class="list-tooltip-body"><span class="muted">${__("(no content)")}</span></div>`;
 		}
 
 		const lines = text.split("\n");

@@ -65,21 +65,17 @@ frappe.provide("ui_styles.list_scroll");
 			top = Math.max(sticky_bottom, head_bottom);
 		}
 		const top_px = `${Math.round(top)}px`;
-		document
-			.querySelectorAll(".frappe-list.list-sticky-header .list-row-head")
-			.forEach((head) => {
-				if (head.style.top !== top_px) {
-					head.style.top = top_px;
-				}
-			});
+		document.querySelectorAll(".frappe-list.list-sticky-header .list-row-head").forEach((head) => {
+			if (head.style.top !== top_px) {
+				head.style.top = top_px;
+			}
+		});
 		// Clear leftover top on lists that no longer use sticky header
-		document
-			.querySelectorAll(".frappe-list:not(.list-sticky-header) .list-row-head")
-			.forEach((head) => {
-				if (head.style.top) {
-					head.style.removeProperty("top");
-				}
-			});
+		document.querySelectorAll(".frappe-list:not(.list-sticky-header) .list-row-head").forEach((head) => {
+			if (head.style.top) {
+				head.style.removeProperty("top");
+			}
+		});
 	}
 
 	function follow_page_head_top(duration_ms = PAGE_HEAD_TOP_MS) {

@@ -92,10 +92,7 @@ frappe.provide("ui_styles.doc_table");
 	function dummy_table_html(filters_applied) {
 		const columns = [__("ID"), __("Column 1"), __("Column 2"), __("Column 3")];
 		const heads = columns
-			.map(
-				(label) =>
-					`<div class="doc-table-builder-col">${frappe.utils.escape_html(label)}</div>`
-			)
+			.map((label) => `<div class="doc-table-builder-col">${frappe.utils.escape_html(label)}</div>`)
 			.join("");
 		const applied = filters_applied ? " btn-filter-applied" : "";
 		// Icon-only control (same as Form Builder Link fields). Kept on the
@@ -103,9 +100,7 @@ frappe.provide("ui_styles.doc_table");
 		return `<div class="doc-table-builder-preview form-grid">
 			<div class="doc-table-builder-head grid-heading-row">
 				<div class="doc-table-builder-cols">${heads}</div>
-				<button type="button" class="btn btn-xs btn-icon doc-table-filter-btn${applied}" title="${__(
-			"Set Filters"
-		)}">
+				<button type="button" class="btn btn-xs btn-icon doc-table-filter-btn${applied}" title="${__("Set Filters")}">
 					<div>${frappe.utils.icon("filter", "sm")}</div>
 				</button>
 			</div>
@@ -248,9 +243,7 @@ frappe.provide("ui_styles.doc_table");
 		frappe.require = function (modules, callback) {
 			const result = orig_require(modules, callback);
 			const names = Array.isArray(modules) ? modules : [modules];
-			const wants_form_builder = names.some((name) =>
-				String(name).includes("form_builder.bundle")
-			);
+			const wants_form_builder = names.some((name) => String(name).includes("form_builder.bundle"));
 			if (!wants_form_builder) {
 				return result;
 			}

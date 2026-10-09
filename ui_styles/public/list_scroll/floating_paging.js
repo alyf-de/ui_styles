@@ -70,9 +70,7 @@ frappe.provide("ui_styles.list_scroll");
 	function refresh_floating_paging_box(scope) {
 		const lists = scope
 			? [
-					scope.classList?.contains("frappe-list")
-						? scope
-						: scope.querySelector?.(".frappe-list"),
+					scope.classList?.contains("frappe-list") ? scope : scope.querySelector?.(".frappe-list"),
 			  ].filter(Boolean)
 			: Array.from(document.querySelectorAll(`.frappe-list.${CLASS_FLOATING}`));
 		lists.forEach((list) => {
@@ -82,14 +80,12 @@ frappe.provide("ui_styles.list_scroll");
 				);
 				return;
 			}
-			list.querySelectorAll(`:scope > .list-paging-area.${PAGING_FLOAT}`).forEach(
-				(paging) => {
-					const host = paging.closest(".layout-main-section") || list;
-					const host_rect = host.getBoundingClientRect();
-					paging.style.left = `${Math.round(host_rect.left)}px`;
-					paging.style.width = `${Math.round(host_rect.width)}px`;
-				}
-			);
+			list.querySelectorAll(`:scope > .list-paging-area.${PAGING_FLOAT}`).forEach((paging) => {
+				const host = paging.closest(".layout-main-section") || list;
+				const host_rect = host.getBoundingClientRect();
+				paging.style.left = `${Math.round(host_rect.left)}px`;
+				paging.style.width = `${Math.round(host_rect.width)}px`;
+			});
 		});
 	}
 

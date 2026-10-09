@@ -1,8 +1,7 @@
 frappe.ui.form.on("User", {
 	refresh(frm) {
 		const allowed =
-			frappe.boot.desk_background?.enabled === 1 &&
-			frappe.boot.desk_background?.allow_user_color === 1;
+			frappe.boot.desk_background?.enabled === 1 && frappe.boot.desk_background?.allow_user_color === 1;
 		for (const fieldname of ["desk_color_preset", "desk_color_intensity"]) {
 			if (!frm.fields_dict[fieldname]) {
 				continue;
