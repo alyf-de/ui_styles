@@ -35,7 +35,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-10-02 16:25:08.503766",
+ "modified": "2026-10-09 14:43:45.206234",
  "modified_by": "Administrator",
  "module": "List Tooltip",
  "name": "List Tooltip Settings",
@@ -54,7 +54,7 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
- "sort_field": "modified",
+ "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1

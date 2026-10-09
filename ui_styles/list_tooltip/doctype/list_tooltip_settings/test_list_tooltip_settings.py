@@ -2,12 +2,12 @@
 # For license information, please see license.txt
 
 import frappe
-from frappe.tests.utils import FrappeTestCase
+from frappe.tests import IntegrationTestCase
 
 from ui_styles.list_tooltip.boot import extend_bootinfo
 
 
-class TestListTooltipSettings(FrappeTestCase):
+class TestListTooltipSettings(IntegrationTestCase):
 	def setUp(self):
 		doc = frappe.get_single("List Tooltip Settings")
 		doc.enabled = 0
