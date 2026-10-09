@@ -97,9 +97,9 @@ def get_doc_table_data(
 	list_kwargs = {
 		"fields": fetch_fields,
 		"order_by": order_by,
-		"limit_start": start,
+		"offset": start,
 		# Fetch one extra row to detect whether another page exists.
-		"limit_page_length": limit + 1,
+		"limit": limit + 1,
 		"ignore_permissions": False,
 	}
 	_apply_parent_link_filters(list_kwargs, link_fields, parent_name)
@@ -251,9 +251,8 @@ def _count_rows(doctype: str, list_kwargs: dict) -> int:
 		return _count_rows_via_list(doctype, list_kwargs)
 
 	args = {
-		"fields": ["count(name) as total"],
+		"fields": [{"COUNT": "name", "as": "total"}],
 		"ignore_permissions": False,
-		"limit_page_length": None,
 		"order_by": None,
 	}
 	if list_kwargs.get("filters"):
@@ -272,7 +271,7 @@ def _count_rows_via_list(doctype: str, list_kwargs: dict) -> int:
 	args = {
 		"fields": ["name"],
 		"ignore_permissions": False,
-		"limit_page_length": 10000,
+		"limit": 10000,
 	}
 	if list_kwargs.get("filters"):
 		args["filters"] = list_kwargs["filters"]

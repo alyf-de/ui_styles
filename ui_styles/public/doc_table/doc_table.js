@@ -565,7 +565,8 @@ frappe.ui.form.ControlDocTable = class ControlDocTable extends frappe.ui.form.Co
 		}
 
 		if (is_link && docname) {
-			html = `<a href="/app/${frappe.router.slug(table_meta.doctype)}/${encodeURIComponent(
+			html = `<a href="${frappe.utils.get_form_link(
+				table_meta.doctype,
 				docname
 			)}" class="doc-table-link" data-name="${frappe.utils.escape_html(docname)}">${html}</a>`;
 		}
