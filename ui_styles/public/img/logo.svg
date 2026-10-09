@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+	<defs>
+		<linearGradient id="ui-styles-bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#6ECB81"/>
+			<stop offset="0.5" stop-color="#1FAEC0"/>
+			<stop offset="1" stop-color="#0084E8"/>
+		</linearGradient>
+	</defs>
+	<rect width="64" height="64" rx="14" fill="url(#ui-styles-bg)"/>
+	<rect x="13" y="15" width="38" height="34" rx="6" fill="#fff"/>
+	<rect x="13" y="21" width="38" height="3" fill="#E6F4F8"/>
+	<circle cx="18.5" cy="19.5" r="1.6" fill="#45AF6B"/>
+	<circle cx="23.5" cy="19.5" r="1.6" fill="#1FAEC0"/>
+	<circle cx="28.5" cy="19.5" r="1.6" fill="#0084E8"/>
+	<rect x="18" y="29" width="8" height="15" rx="2.5" fill="#45AF6B"/>
+	<rect x="29" y="29" width="17" height="4" rx="2" fill="#02ABF6"/>
+	<rect x="29" y="35" width="13" height="4" rx="2" fill="#7CCFF8"/>
+	<rect x="29" y="41" width="9" height="3" rx="1.5" fill="#6ECB81"/>
+</svg>

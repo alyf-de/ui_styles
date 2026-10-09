@@ -11,15 +11,15 @@ app_license = "gpl-3.0"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "ui_styles",
-# 		"logo": "/assets/ui_styles/logo.png",
-# 		"title": "UI Styles",
-# 		"route": "/ui_styles",
-# 		"has_permission": "ui_styles.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "ui_styles",
+		"logo": "/assets/ui_styles/img/logo.svg",
+		"title": "UI Styles",
+		"route": "/desk/ui-styles",
+		"has_permission": "ui_styles.apps.has_app_permission",
+	}
+]
 
 # Includes in <head>
 # ------------------
