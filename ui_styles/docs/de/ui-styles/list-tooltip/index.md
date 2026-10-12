@@ -9,7 +9,9 @@ roles:
 
 Beim Überfahren eines Info-Symbols in einer Listenzeile werden ausgewählte Felder des Dokuments als Vorschau angezeigt, ohne das Dokument zu öffnen. Für jedes **DocType** legen Sie fest, welche Felder als Zeilen aus Bezeichnung und Wert (Kopfzeile) und welches Feld als Textblock (Text) angezeigt werden, zum Beispiel eine E-Mail-artige Vorschau für **Kommunikation**.
 
-Die Funktion ist **standardmäßig aus**. Ein System-Manager muss *Aktiviert* in **Listen-Tooltip Einstellungen** einschalten und mindestens eine Konfigurationszeile anlegen, bevor ein Symbol erscheint.
+Optional können Sie *Kommentarvorschau* aktivieren, um beim Überfahren der Kommentaranzahl in jeder Liste den neuesten **Kommentar** oder die neueste **Kommunikation** anzuzeigen.
+
+Die Funktion ist **standardmäßig aus**. Ein System-Manager muss *Aktiviert* in **Listen-Tooltip Einstellungen** einschalten und dann entweder mindestens eine Konfigurationszeile anlegen und/oder *Kommentarvorschau* aktivieren.
 
 ## Anleitungen
 

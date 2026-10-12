@@ -553,10 +553,25 @@ msgstr "Wenn ein DocType hier eine Zeile hat, ersetzt diese Zeile die Standardei
 msgid "(no content)"
 msgstr "(kein Inhalt)"
 
+#: ui_styles/public/list_tooltip/list_tooltip.js
+msgid "(no text)"
+msgstr "(kein Text)"
+
 #. Label of a Small Text field in DocType 'List Tooltip Configuration'
 #: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
 msgid "Body Fields"
 msgstr "Textfelder"
+
+#. Label of a Check field in DocType 'List Tooltip Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "Comment Preview"
+msgstr "Kommentarvorschau"
+
+#. Description of the 'Comment Preview' (Check) field in DocType 'List Tooltip
+#. Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "On hover of the comment count in any list, show the latest Comment or Communication for that row."
+msgstr "Wenn man in einer beliebigen Liste mit der Maus über die Anzahl der Kommentare fährt, wird der neueste Kommentar oder die neueste Kommunikation für die jeweilige Zeile angezeigt."
 
 #. Label of a Int field in DocType 'List Tooltip Configuration'
 #: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json

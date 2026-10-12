@@ -1,6 +1,6 @@
 # List Tooltip
 
-Opt-in hover preview for Desk list views. An info icon in the first column of a row shows a tooltip with configured fields of that document, so users can read a summary without opening it. Configure the DocTypes on **List Tooltip Settings** (UI Styles workspace).
+Opt-in hover preview for Desk list views. An info icon in the first column of a row shows a tooltip with configured fields of that document, so users can read a summary without opening it. Optionally enable *Comment Preview* to show the latest **Comment** or **Communication** when hovering the comment count. Configure both on **List Tooltip Settings** (UI Styles workspace).
 
 See `docs/en/ui-styles/list-tooltip/` for operator guides.
 

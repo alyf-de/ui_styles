@@ -55,3 +55,47 @@
 .list-tooltip-popover .list-tooltip-body .muted {
 	color: var(--text-muted);
 }
+
+/* Comment / Communication preview on list comment-count hover */
+.list-tooltip-popover--thread {
+	padding: 0;
+	min-width: 320px;
+	max-width: min(720px, 92vw);
+	max-height: 50vh;
+	overflow: auto;
+}
+.list-tooltip-popover--thread .list-tooltip-meta {
+	font-size: var(--text-xs);
+	color: var(--text-muted);
+	background: var(--subtle-fg);
+	margin: 0;
+	border-bottom: 1px solid var(--border-color);
+	padding: 10px 12px;
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.list-tooltip-popover--thread .list-tooltip-meta-line {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 6px;
+}
+.list-tooltip-popover--thread .list-tooltip-meta-kicker {
+	display: inline-flex;
+	align-items: center;
+	line-height: 0;
+	color: var(--text-color);
+}
+.list-tooltip-popover--thread .list-tooltip-meta-kicker .es-icon {
+	flex-shrink: 0;
+}
+.list-tooltip-popover--thread .list-tooltip-meta-subject,
+.list-tooltip-popover--thread .list-tooltip-meta-time {
+	display: block;
+	margin-top: 4px;
+	width: 100%;
+}
+.list-tooltip-popover--thread .list-tooltip-body {
+	margin-top: 0;
+	padding: 12px;
+	border-top: none;
+}

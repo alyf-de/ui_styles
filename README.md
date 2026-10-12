@@ -21,7 +21,7 @@ Opt-in dense Desk list layout with a shared horizontal scrollbar. See `ui_styles
 
 #### List Tooltip
 
-Opt-in hover preview in list views: an info icon shows configured fields of a row. See `ui_styles/list_tooltip/README.md`.
+Opt-in hover preview in list views: an info icon shows configured fields of a row; optional comment-count preview for the latest **Comment** / **Communication**. See `ui_styles/list_tooltip/README.md`.
 
 ### Installation
 
