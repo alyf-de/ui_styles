@@ -33,7 +33,7 @@ app_include_css = [
 	# list_tooltip:
 	"/assets/ui_styles/list_tooltip/list_tooltip.css",
 	# history:
-	"/assets/ui_styles/history/history.css?v=20261012e",
+	"/assets/ui_styles/history/history.css",
 ]
 app_include_js = [
 	# doc_table:
@@ -48,7 +48,7 @@ app_include_js = [
 	# list_tooltip:
 	"/assets/ui_styles/list_tooltip/list_tooltip.js",
 	# history:
-	"/assets/ui_styles/history/history.js?v=20261012e",
+	"/assets/ui_styles/history/history.js",
 ]
 
 # include js, css files in header of web template

@@ -275,46 +275,28 @@ $(() => {
 				filters[key] = true;
 			});
 			save_filters(filters);
-			load_recent($menu);
+			paint_list($menu, $menu.data("items") || []);
 		});
 		$menu.find(".history-filter-option input").on("change", (event) => {
 			event.stopPropagation();
 			const filters = load_filters();
 			filters[event.target.dataset.group] = event.target.checked;
 			save_filters(filters);
-			load_recent($menu);
+			paint_list($menu, $menu.data("items") || []);
 		});
 	}
 
-	function hidden_group_names() {
-		const filters = load_filters();
-		return GROUPS.filter(([key]) => !filters[key]).map(([key]) => key);
-	}
-
-	let request_id = 0;
-
 	function load_recent($menu) {
 		const session_items = session_history();
-		const request = ++request_id;
 		frappe.call({
 			method: "ui_styles.history.history.get_recent",
-			args: {
-				limit: maxEntries,
-				current_route: standard_route(frappe.get_route_str && frappe.get_route_str()),
-				hidden_groups: hidden_group_names(),
-			},
+			type: "GET",
 			callback: (r) => {
-				if (request !== request_id) {
-					return;
-				}
 				const items = merge_history(session_items, r.message || []);
 				$menu.data("items", items);
 				paint_list($menu, items);
 			},
 			error: () => {
-				if (request !== request_id) {
-					return;
-				}
 				const items = merge_history(session_items, []);
 				$menu.data("items", items);
 				paint_list($menu, items);

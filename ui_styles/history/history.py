@@ -4,68 +4,24 @@
 import frappe
 from frappe import _
 from frappe.query_builder.functions import Max
-from frappe.utils import cint
 
 from ui_styles.history.boot import get_max_entries
 
-# Distinct routes read before the current page and hidden groups are skipped.
+# Distinct routes sent to the menu, which filters them and keeps Max Entries.
 SCAN_LIMIT = 200
 
 
-def _require_history() -> int:
-	limit = get_max_entries()
-	if not limit:
+@frappe.whitelist(methods=["GET"])
+@frappe.read_only()
+def get_recent() -> list[dict]:
+	if not get_max_entries():
 		frappe.throw(_("History is not enabled."), frappe.PermissionError)
-	return limit
+	if frappe.session.user == "Guest":
+		return []
 
-
-def category(route: str, singles: dict | None = None) -> str | None:
-	"""Same groups as the menu checkboxes. None stays visible."""
-	parts = [part for part in (route or "").split("/") if part]
-	if not parts:
-		return None
-	kind = parts[0]
-	doctype = parts[1] if len(parts) > 1 else ""
-	is_settings = doctype.lower().endswith("settings")
-	if kind in ("Workspaces", "dashboard"):
-		return "workspaces"
-	if kind == "query-report":
-		return "reports"
-	if kind == "List":
-		return "settings" if is_settings else "lists"
-	if kind == "Form":
-		name = "/".join(parts[2:])
-		if is_settings or not name or _is_single(doctype, singles):
-			return "settings"
-		return "documents"
-	if is_settings:
-		return "settings"
-	return None
-
-
-def _is_single(doctype: str, singles: dict | None = None) -> bool:
-	if not doctype:
-		return False
-	if singles is not None and doctype in singles:
-		return singles[doctype]
-	single = bool(frappe.db.get_value("DocType", doctype, "issingle"))
-	if singles is not None:
-		singles[doctype] = single
-	return single
-
-
-def _hidden_groups(value) -> set[str]:
-	if isinstance(value, str):
-		value = frappe.parse_json(value)
-	if not value:
-		return set()
-	return {group for group in value if group}
-
-
-def _latest_routes() -> list[dict]:
 	history = frappe.qb.DocType("Route History")
 	latest = Max(history.creation)
-	return (
+	rows = (
 		frappe.qb.from_(history)
 		.select(history.route, latest.as_("creation"))
 		.where(history.user == frappe.session.user)
@@ -74,32 +30,8 @@ def _latest_routes() -> list[dict]:
 		.limit(SCAN_LIMIT)
 		.run(as_dict=True)
 	)
-
-
-@frappe.whitelist()
-def get_recent(
-	limit: int | None = None,
-	current_route: str | None = None,
-	hidden_groups: str | list | None = None,
-) -> list[dict]:
-	cap = _require_history()
-	if frappe.session.user == "Guest":
-		return []
-
-	limit = min(max(cint(limit) or cap, 1), cap)
-	current = (current_route or "").strip().lstrip("/")
-	hidden = _hidden_groups(hidden_groups)
-	singles = {}
-	items = []
-	for row in _latest_routes():
-		route = (row.route or "").strip()
-		if not route or route == current:
-			continue
-		if hidden:
-			group = category(route, singles)
-			if group and group in hidden:
-				continue
-		items.append({"route": route, "creation": str(row.creation) if row.creation else None})
-		if len(items) >= limit:
-			break
-	return items
+	return [
+		{"route": row.route.strip(), "creation": str(row.creation) if row.creation else None}
+		for row in rows
+		if row.route and row.route.strip()
+	]

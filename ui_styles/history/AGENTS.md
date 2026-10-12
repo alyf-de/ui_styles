@@ -23,13 +23,15 @@ Opt-in clock menu in the Desk navbar. It lists the current user's recently visit
 | Path | Role |
 |------|------|
 | `history/boot.py` | `extend_bootinfo` - `frappe.boot.history.max_entries` when enabled |
-| `history/history.py` | Whitelist `get_recent`; caps the client limit at *Max Entries* |
+| `history/history.py` | Read-only GET `get_recent`; latest 200 distinct routes for the menu |
 | `history/doctype/history_settings/` | Settings Single; `validate` keeps *Max Entries* between 1 and 50 |
 | `public/history/history.js` | Navbar clock menu; namespace `ui_styles.history` |
 | `public/history/history.css` | `.history-menu-root` and the dropdown |
 | `docs/en|de/ui-styles/history/` | Compendium |
 
-`get_recent` uses `frappe.get_all` filtered to `user = session user`, because **Route History** grants read only to System Manager.
+`get_recent` reads **Route History** with the query builder, limited to `user = session user`, because **Route History** grants read only to System Manager. It groups by route so repeat visits do not crowd out older pages.
+
+`history.js` owns the filter groups. It drops the current page and hidden groups from that window, then keeps *Max Entries*. Filter changes repaint without another request.
 
 ## Deploy
 
