@@ -208,6 +208,9 @@ $(() => {
 		}
 
 		function show_field_popover(doctype, cfg, doc, anchor) {
+			clearTimeout(hide_timer);
+			hide_timer = null;
+			cancel_pending_preview();
 			const $pop = get_popover();
 			$pop.removeClass("list-tooltip-popover--thread");
 			$pop.html(build_html(doctype, cfg, doc));
