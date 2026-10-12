@@ -78,7 +78,9 @@ class TestHistory(FrappeTestCase):
 
 	def test_document_named_like_its_doctype_is_not_settings(self):
 		self.assertEqual(category("Form/Item/Item"), "documents")
-		self.assertEqual(category("Form/Homepage/Homepage"), "settings")
+		singles = frappe.get_all("DocType", filters={"issingle": 1}, pluck="name")
+		single = next(name for name in singles if not name.lower().endswith("settings"))
+		self.assertEqual(category(f"Form/{single}/{single}"), "settings")
 
 	def test_max_entries_caps_client_limit(self):
 		self._enable(2)
