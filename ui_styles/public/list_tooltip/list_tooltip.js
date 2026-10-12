@@ -21,9 +21,9 @@ $(() => {
 
 	function get_popover() {
 		if (!$popover || !$popover.length) {
-			$popover = $('<div class="list-tooltip-popover" style="display:none;"></div>').appendTo(
-				"body"
-			);
+			$popover = $(
+				'<div class="list-tooltip-popover" style="display:none;"></div>'
+			).appendTo("body");
 		}
 		return $popover;
 	}
@@ -129,8 +129,9 @@ $(() => {
 				}
 
 				const $btn = $('<span class="list-tooltip-btn">&#8505;</span>');
-				$btn
-					.on("mouseenter", () => show_field_popover(listview.doctype, cfg, doc, $btn[0]))
+				$btn.on("mouseenter", () =>
+					show_field_popover(listview.doctype, cfg, doc, $btn[0])
+				)
 					.on("mouseleave", hide_popover)
 					.on("click", (e) => e.stopPropagation());
 				$subject.find(".select-like").after($btn);
@@ -247,7 +248,9 @@ $(() => {
 				return false;
 			}
 			const raw =
-				row.text_content && String(row.text_content).trim() ? row.text_content : row.content;
+				row.text_content && String(row.text_content).trim()
+					? row.text_content
+					: row.content;
 			return !!html_to_text(raw || "");
 		}
 
@@ -267,9 +270,7 @@ $(() => {
 			}
 			const t1 = new Date(c.creation).getTime();
 			const t2 = new Date(comm.creation).getTime();
-			return t2 >= t1
-				? { kind: "communication", row: comm }
-				: { kind: "comment", row: c };
+			return t2 >= t1 ? { kind: "communication", row: comm } : { kind: "comment", row: c };
 		}
 
 		function resolve_displayable(c, comm) {
@@ -382,8 +383,7 @@ $(() => {
 			);
 		}
 
-		const selector =
-			".layout-main .frappe-list .comment-count, .frappe-list .comment-count";
+		const selector = ".layout-main .frappe-list .comment-count, .frappe-list .comment-count";
 
 		$(document).on("mouseenter", selector, function () {
 			const anchor = this;
