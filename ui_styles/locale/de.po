@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UI Styles VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-09-02 20:21+0000\n"
+"POT-Creation-Date: 2026-10-12 10:55+0000\n"
 "PO-Revision-Date: 2026-09-01 14:36+0000\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language: de\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
+
+#: ui_styles/public/list_tooltip/list_tooltip.js:199
+msgid "(no content)"
+msgstr "(kein Inhalt)"
+
+#: ui_styles/public/list_tooltip/list_tooltip.js:372
+msgid "(no text)"
+msgstr "(kein Text)"
 
 #. Header text in the UI Styles Workspace
 #: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
@@ -46,6 +54,16 @@ msgstr "Blaugrau"
 msgid "Blush"
 msgstr "Zartrosa"
 
+#. Label of a Small Text field in DocType 'List Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Body Fields"
+msgstr "Textfelder"
+
+#. Label of a Int field in DocType 'List Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Body Max Lines"
+msgstr "Max. Textzeilen"
+
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -56,6 +74,12 @@ msgstr "Butter"
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Clear all user choices on reset"
 msgstr "Alle Benutzerauswahlen beim Zurücksetzen löschen"
+
+#. Description of the 'Enabled' (Check) field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "Clock menu of recently visited Desk pages."
+msgstr "Uhr-Menü der zuletzt besuchten Desk-Seiten."
+
 
 #. Label of a Select field in DocType 'Desk Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -82,11 +106,34 @@ msgstr "Spalte {0} ist kein Feld von {1}"
 msgid "Column {0} on {1} is not a value field"
 msgstr "Spalte {0} auf {1} ist kein Wertfeld"
 
+#. Description of the 'Body Fields' (Small Text) field in DocType 'List Tooltip
+#. Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Comma-separated fieldnames shown as a text block. The first non-empty field is used."
+msgstr "Kommagetrennte Feldnamen, die als Textblock angezeigt werden. Das erste nicht leere Feld wird verwendet."
+
+#. Description of the 'Header Fields' (Small Text) field in DocType 'List
+#. Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Comma-separated fieldnames shown as label / value rows."
+msgstr "Kommagetrennte Feldnamen, die als Zeilen aus Bezeichnung und Wert angezeigt werden."
+
+#. Label of a Check field in DocType 'List Tooltip Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "Comment Preview"
+msgstr "Kommentarvorschau"
+
 #. Description of the 'Dense List Layout' (Check) field in DocType 'List Scroll
 #. Settings'
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
 msgid "Compact Desk list columns with a shared horizontal scrollbar in the list header."
 msgstr "Kompakte Listenspalten mit gemeinsamer horizontaler Scrollleiste in der Listen-Kopfzeile."
+
+#. Label of a Section Break field in DocType 'List Tooltip Settings'
+#. Label of a Table field in DocType 'List Tooltip Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "Configurations"
+msgstr "Konfigurationen"
 
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
@@ -104,7 +151,9 @@ msgstr "Doc Table konnte nicht geladen werden"
 msgid "Cream"
 msgstr "Creme"
 
+#. Label of a Check field in DocType 'List Scroll DocType Setting'
 #. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
 msgid "Dense List Layout"
 msgstr "Dichte Listenansicht"
@@ -236,6 +285,26 @@ msgstr "Doc Table {0} muss eine positive Ganzzahl sein (erhalten: {1})"
 msgid "Doc Table {0} must be at least 1"
 msgstr "Doc Table {0} muss mindestens 1 sein"
 
+#. Label of a Section Break field in DocType 'List Scroll Settings'
+#. Label of a Table field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "DocType Overrides"
+msgstr "DocType-Überschreibungen"
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:39
+msgid "DocType {0} is listed more than once in DocType Overrides."
+msgstr "DocType {0} ist in den DocType-Überschreibungen mehrfach aufgeführt."
+
+#: ui_styles/public/history/history.js:22
+msgctxt "History"
+msgid "Documents"
+msgstr "Belege"
+
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:42
+msgid "Duplicate DocType"
+msgstr "Doppelter DocType"
+
 #. Label of a Check field in DocType 'Desk Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Enable Desk Background"
@@ -266,7 +335,9 @@ msgstr "Feld {0} auf {1} muss eine Verknüpfung zu {2} sein"
 msgid "Fieldname is required"
 msgstr "Feldname ist erforderlich"
 
+#. Label of a Check field in DocType 'List Scroll DocType Setting'
 #. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
 msgid "Floating List Paging"
 msgstr "Schwebende Listen-Paginierung"
@@ -276,6 +347,36 @@ msgstr "Schwebende Listen-Paginierung"
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Fog"
 msgstr "Nebel"
+
+#. Label of a Small Text field in DocType 'List Tooltip Configuration'
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "Header Fields"
+msgstr "Kopfzeilenfelder"
+
+#: ui_styles/public/history/history.js:326
+#: ui_styles/public/history/history.js:328
+msgid "History"
+msgstr "Verlauf"
+
+
+#. Name of a DocType
+#. Label of a Link in the UI Styles Workspace
+#: ui_styles/history/doctype/history_settings/history_settings.json
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "History Settings"
+msgstr "Verlauf Einstellungen"
+
+
+#: ui_styles/history/history.py:18
+msgid "History is not enabled."
+msgstr "Verlauf ist nicht aktiviert."
+
+
+#. Description of the 'Max Entries' (Int) field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "How many distinct recent pages the History menu shows. 50 is the maximum when no filter is set."
+msgstr "Wie viele verschiedene zuletzt besuchte Seiten das Verlauf-Menü zeigt. 50 ist das Maximum, wenn kein Filter gesetzt ist."
+
 
 #: ui_styles/doc_table/api.py:204 ui_styles/doc_table/api.py:229
 #: ui_styles/doc_table/api.py:291
@@ -289,6 +390,10 @@ msgstr "Ungültiger Doc-Table-Filteroperator: {0}"
 #: ui_styles/doc_table/parse.py:205
 msgid "Invalid Doc Table order_by clause: {0}"
 msgstr "Ungültige Doc-Table-order_by-Klausel: {0}"
+
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py:59
+msgid "Invalid Field"
+msgstr "Ungültiges Feld"
 
 #. Description of the 'Sticky List Header' (Check) field in DocType 'List
 #. Scroll Settings'
@@ -319,11 +424,39 @@ msgid "Lilac"
 msgstr "Flieder"
 
 #. Name of a DocType
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+msgid "List Scroll DocType Setting"
+msgstr "Listen-Scroll DocType-Einstellung"
+
+#. Name of a DocType
 #. Label of a Link in the UI Styles Workspace
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
 #: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
 msgid "List Scroll Settings"
 msgstr "Listen-Scroll Einstellungen"
+
+#. Name of a DocType
+#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
+msgid "List Tooltip Configuration"
+msgstr "Listen-Tooltip Konfiguration"
+
+#. Name of a DocType
+#. Label of a Link in the UI Styles Workspace
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "List Tooltip Settings"
+msgstr "Listen-Tooltip Einstellungen"
+
+#. Label of a Int field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "Max Entries"
+msgstr "Max. Einträge"
+
+
+#: ui_styles/history/doctype/history_settings/history_settings.py:29
+msgid "Max Entries must be between 1 and {0}."
+msgstr "Max. Einträge muss zwischen 1 und {0} liegen."
+
 
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
@@ -345,11 +478,40 @@ msgstr "Kein Verknüpfungsfeld auf {0}, das auf {1} zeigt. Setzen Sie link: fiel
 msgid "No linked documents"
 msgstr "Keine verknüpften Dokumente"
 
+#: ui_styles/public/history/history.js:245
+msgid "No recent pages"
+msgstr "Keine zuletzt besuchten Seiten"
+
+
+#. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll
+#. DocType Setting'
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+msgid "Number of leading list columns that stay fixed while scrolling horizontally."
+msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fixiert bleiben."
+
+#. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll
+#. Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Number of leading list columns that stay fixed while scrolling horizontally. Applies to all lists unless overridden below."
+msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fixiert bleiben. Gilt für alle Listen, sofern unten nicht überschrieben."
+
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Off White"
 msgstr "Fast Weiß"
+
+#. Description of the 'Comment Preview' (Check) field in DocType 'List Tooltip
+#. Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "On hover of the comment count in any list, show the latest Comment or Communication for that row."
+msgstr "Wenn man in einer beliebigen Liste mit der Maus über die Anzahl der Kommentare fährt, wird der neueste Kommentar oder die neueste Kommunikation für die jeweilige Zeile angezeigt."
+
+#. Description of the 'Configurations' (Table) field in DocType 'List Tooltip
+#. Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "One row per DocType. If a DocType appears more than once, the first row is used."
+msgstr "Eine Zeile pro DocType. Kommt ein DocType mehrfach vor, wird die erste Zeile verwendet."
 
 #: ui_styles/public/doc_table/doc_table.js:160
 msgid "Open List"
@@ -379,9 +541,18 @@ msgstr "Paginierungsleiste am unteren Fensterrand fixieren (gleicher Abstand wie
 msgid "Please set Options to a DocType before setting filters"
 msgstr "Bitte setzen Sie Optionen auf ein DocType, bevor Sie Filter setzen"
 
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:26
+#: ui_styles/history/doctype/history_settings/history_settings.py:36
+msgid "Reload the Desk (hard refresh) to apply History Settings changes."
+msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Verlauf Einstellungen anzuwenden."
+
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:60
 msgid "Reload the Desk (hard refresh) to apply List Scroll Settings changes."
 msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Listen-Scroll Einstellungen anzuwenden."
+
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py:65
+msgid "Reload the Desk (hard refresh) to apply List Tooltip Settings changes."
+msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Listen-Tooltip Einstellungen anzuwenden."
 
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.js:3
 msgid "Reset site colour to Standard?"
@@ -397,6 +568,14 @@ msgstr "Auf Standard zurücksetzen"
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Rose Quartz"
 msgstr "Rosenquarz"
+
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py:41
+msgid "Row #{0}: Body Max Lines must be at least 1."
+msgstr "Zeile #{0}: Max. Textzeilen muss mindestens 1 sein."
+
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py:56
+msgid "Row #{0}: {1} is not a field of {2} that can be shown in a list."
+msgstr "Zeile #{0}: {1} ist kein Feld von {2}, das in einer Liste angezeigt werden kann."
 
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
@@ -420,6 +599,12 @@ msgstr "Speichern Sie das Dokument, um verwandte Zeilen zu laden."
 msgid "Sea Foam"
 msgstr "Meerschaum"
 
+#. Description of the 'Enabled' (Check) field in DocType 'List Tooltip
+#. Settings'
+#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
+msgid "Show an info icon in configured list views that previews fields on hover."
+msgstr "Zeigt in konfigurierten Listenansichten ein Info-Symbol, das beim Überfahren Felder als Vorschau anzeigt."
+
 #: ui_styles/public/doc_table/doc_table.js:504
 msgid "Showing {0} of {1}"
 msgstr "Zeigt {0} von {1}"
@@ -439,7 +624,20 @@ msgstr "Seitenfarbvoreinstellung"
 msgid "Sky"
 msgstr "Himmel"
 
+#. Label of a Int field in DocType 'List Scroll DocType Setting'
+#. Label of a Int field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "Sticky Columns"
+msgstr "Fixierte Spalten"
+
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:50
+msgid "Sticky Columns cannot be negative."
+msgstr "Fixierte Spalten dürfen nicht negativ sein."
+
+#. Label of a Check field in DocType 'List Scroll DocType Setting'
 #. Label of a Check field in DocType 'List Scroll Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
 msgid "Sticky List Header"
 msgstr "Fixierte Listen-Kopfzeile"
@@ -477,6 +675,12 @@ msgstr "Warmes Grau"
 msgid "Wheat"
 msgstr "Weizen"
 
+#. Description of the 'DocType Overrides' (Table) field in DocType 'List Scroll
+#. Settings'
+#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
+msgid "When a DocType has a row here, that row fully replaces the Defaults for its list view."
+msgstr "Wenn ein DocType hier eine Zeile hat, ersetzt diese Zeile die Standardeinstellungen für dessen Listenansicht vollständig."
+
 #. Description of the 'Enable Desk Background' (Check) field in DocType 'Desk
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -497,177 +701,3 @@ msgstr "order_by-Feld {0} ist kein Feld von {1}"
 msgid "order_by field {0} on {1} is not a value field"
 msgstr "order_by-Feld {0} auf {1} ist kein Wertfeld"
 
-#. Label of a Section Break field in DocType 'List Scroll Settings'
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
-msgid "Defaults"
-msgstr "Standardeinstellungen"
-
-#. Label of a Section Break / Table field in DocType 'List Scroll Settings'
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
-msgid "DocType Overrides"
-msgstr "DocType-Überschreibungen"
-
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:39
-msgid "DocType {0} is listed more than once in DocType Overrides."
-msgstr "DocType {0} ist in den DocType-Überschreibungen mehrfach aufgeführt."
-
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:42
-msgid "Duplicate DocType"
-msgstr "Doppelter DocType"
-
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:51
-msgid "Invalid Value"
-msgstr "Ungültiger Wert"
-
-#. Name of a DocType
-#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
-msgid "List Scroll DocType Setting"
-msgstr "Listen-Scroll DocType-Einstellung"
-
-#. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll Settings'
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
-msgid "Number of leading list columns that stay fixed while scrolling horizontally. Applies to all lists unless overridden below."
-msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fixiert bleiben. Gilt für alle Listen, sofern unten nicht überschrieben."
-
-#. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll DocType Setting'
-#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
-msgid "Number of leading list columns that stay fixed while scrolling horizontally."
-msgstr "Anzahl führender Listenspalten, die beim horizontalen Scrollen fixiert bleiben."
-
-#. Label of an Int field in DocType 'List Scroll Settings' / 'List Scroll DocType Setting'
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
-#: ui_styles/list_scroll/doctype/list_scroll_doctype_setting/list_scroll_doctype_setting.json
-msgid "Sticky Columns"
-msgstr "Fixierte Spalten"
-
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:51
-msgid "Sticky Columns cannot be negative."
-msgstr "Fixierte Spalten dürfen nicht negativ sein."
-
-#. Description of the 'DocType Overrides' (Table) field in DocType 'List Scroll Settings'
-#: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.json
-msgid "When a DocType has a row here, that row fully replaces the Defaults for its list view."
-msgstr "Wenn ein DocType hier eine Zeile hat, ersetzt diese Zeile die Standardeinstellungen für dessen Listenansicht vollständig."
-
-#: ui_styles/public/list_tooltip/list_tooltip.js
-msgid "(no content)"
-msgstr "(kein Inhalt)"
-
-#. Label of a Small Text field in DocType 'List Tooltip Configuration'
-#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
-msgid "Body Fields"
-msgstr "Textfelder"
-
-#. Label of a Int field in DocType 'List Tooltip Configuration'
-#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
-msgid "Body Max Lines"
-msgstr "Max. Textzeilen"
-
-#. Description of the 'Body Fields' (Small Text) field in DocType 'List
-#. Tooltip Configuration'
-#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
-msgid "Comma-separated fieldnames shown as a text block. The first non-empty field is used."
-msgstr "Kommagetrennte Feldnamen, die als Textblock angezeigt werden. Das erste nicht leere Feld wird verwendet."
-
-#. Description of the 'Header Fields' (Small Text) field in DocType 'List
-#. Tooltip Configuration'
-#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
-msgid "Comma-separated fieldnames shown as label / value rows."
-msgstr "Kommagetrennte Feldnamen, die als Zeilen aus Bezeichnung und Wert angezeigt werden."
-
-#. Label of a Table field in DocType 'List Tooltip Settings'
-#. Label of a Section Break field in DocType 'List Tooltip Settings'
-#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
-msgid "Configurations"
-msgstr "Konfigurationen"
-
-#. Label of a Small Text field in DocType 'List Tooltip Configuration'
-#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
-msgid "Header Fields"
-msgstr "Kopfzeilenfelder"
-
-#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py
-msgid "Invalid Field"
-msgstr "Ungültiges Feld"
-
-#. Name of a DocType
-#: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
-msgid "List Tooltip Configuration"
-msgstr "Listen-Tooltip Konfiguration"
-
-#. Name of a DocType
-#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
-#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
-msgid "List Tooltip Settings"
-msgstr "Listen-Tooltip Einstellungen"
-
-#. Description of the 'Configurations' (Table) field in DocType 'List Tooltip
-#. Settings'
-#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
-msgid "One row per DocType. If a DocType appears more than once, the first row is used."
-msgstr "Eine Zeile pro DocType. Kommt ein DocType mehrfach vor, wird die erste Zeile verwendet."
-
-#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py
-msgid "Row #{0}: Body Max Lines must be at least 1."
-msgstr "Zeile #{0}: Max. Textzeilen muss mindestens 1 sein."
-
-#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py
-msgid "Reload the Desk (hard refresh) to apply List Tooltip Settings changes."
-msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Listen-Tooltip Einstellungen anzuwenden."
-
-#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.py
-msgid "Row #{0}: {1} is not a field of {2} that can be shown in a list."
-msgstr "Zeile #{0}: {1} ist kein Feld von {2}, das in einer Liste angezeigt werden kann."
-
-#. Description of the 'Enabled' (Check) field in DocType 'List Tooltip
-#. Settings'
-#: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
-msgid "Show an info icon in configured list views that previews fields on hover."
-msgstr "Zeigt in konfigurierten Listenansichten ein Info-Symbol, das beim Überfahren Felder als Vorschau anzeigt."
-
-#. Description of the 'Enabled' (Check) field in DocType 'History Settings'
-#: ui_styles/history/doctype/history_settings/history_settings.json
-msgid "Clock menu of recently visited Desk pages."
-msgstr "Uhr-Menü der zuletzt besuchten Desk-Seiten."
-
-#: ui_styles/public/history/history.js
-msgid "History"
-msgstr "Verlauf"
-
-#: ui_styles/history/history.py
-msgid "History is not enabled."
-msgstr "Verlauf ist nicht aktiviert."
-
-#. Name of a DocType
-#: ui_styles/history/doctype/history_settings/history_settings.json
-#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
-msgid "History Settings"
-msgstr "Verlauf Einstellungen"
-
-#. Description of the 'Max Entries' (Int) field in DocType 'History Settings'
-#: ui_styles/history/doctype/history_settings/history_settings.json
-msgid "How many distinct recent pages the History menu shows. 50 is the maximum when no filter is set."
-msgstr "Wie viele verschiedene zuletzt besuchte Seiten das Verlauf-Menü zeigt. 50 ist das Maximum, wenn kein Filter gesetzt ist."
-
-#. Label of a history filter group. Context keeps this off the shared Documents msgid.
-#: ui_styles/public/history/history.js
-msgctxt "History"
-msgid "Documents"
-msgstr "Belege"
-
-#. Label of an Int field in DocType 'History Settings'
-#: ui_styles/history/doctype/history_settings/history_settings.json
-msgid "Max Entries"
-msgstr "Max. Einträge"
-
-#: ui_styles/history/doctype/history_settings/history_settings.py
-msgid "Max Entries must be between 1 and {0}."
-msgstr "Max. Einträge muss zwischen 1 und {0} liegen."
-
-#: ui_styles/public/history/history.js
-msgid "No recent pages"
-msgstr "Keine zuletzt besuchten Seiten"
-
-#: ui_styles/history/doctype/history_settings/history_settings.py
-msgid "Reload the Desk (hard refresh) to apply History Settings changes."
-msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Verlauf Einstellungen anzuwenden."

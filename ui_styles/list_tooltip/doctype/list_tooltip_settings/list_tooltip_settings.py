@@ -25,6 +25,7 @@ class ListTooltipSettings(Document):
 			ListTooltipConfiguration,
 		)
 
+		comment_preview: DF.Check
 		configurations: DF.Table[ListTooltipConfiguration]
 		enabled: DF.Check
 	# end: auto-generated types

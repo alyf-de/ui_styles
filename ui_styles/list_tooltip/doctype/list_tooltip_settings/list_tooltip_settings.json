@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "enabled",
+  "comment_preview",
   "configurations_section",
   "configurations"
  ],
@@ -16,6 +17,14 @@
    "fieldname": "enabled",
    "fieldtype": "Check",
    "label": "Enabled"
+  },
+  {
+   "default": "0",
+   "depends_on": "enabled",
+   "description": "On hover of the comment count in any list, show the latest Comment or Communication for that row.",
+   "fieldname": "comment_preview",
+   "fieldtype": "Check",
+   "label": "Comment Preview"
   },
   {
    "depends_on": "enabled",
@@ -35,7 +44,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-10-02 16:25:08.503766",
+ "modified": "2026-10-12 11:47:20.354250",
  "modified_by": "Administrator",
  "module": "List Tooltip",
  "name": "List Tooltip Settings",

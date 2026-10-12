@@ -11,15 +11,17 @@ class TestListTooltipSettings(FrappeTestCase):
 	def setUp(self):
 		doc = frappe.get_single("List Tooltip Settings")
 		doc.enabled = 0
+		doc.comment_preview = 0
 		doc.set("configurations", [])
 		doc.save()
 
 	def tearDown(self):
 		self.setUp()
 
-	def save_settings(self, enabled=1, **row):
+	def save_settings(self, enabled=1, comment_preview=0, **row):
 		doc = frappe.get_single("List Tooltip Settings")
 		doc.enabled = enabled
+		doc.comment_preview = comment_preview
 		doc.append("configurations", {"reference_doctype": "ToDo", **row})
 		doc.save()
 
@@ -33,6 +35,17 @@ class TestListTooltipSettings(FrappeTestCase):
 		bootinfo = frappe._dict()
 		extend_bootinfo(bootinfo)
 		self.assertNotIn("list_tooltip", bootinfo)
+
+	def test_boot_comment_preview_alone(self):
+		doc = frappe.get_single("List Tooltip Settings")
+		doc.enabled = 1
+		doc.comment_preview = 1
+		doc.save()
+
+		bootinfo = frappe._dict()
+		extend_bootinfo(bootinfo)
+		self.assertEqual(bootinfo.list_tooltip["by_doctype"], {})
+		self.assertTrue(bootinfo.list_tooltip["comment_preview"])
 
 	def test_boot_splits_fields_and_skips_disabled_rows(self):
 		doc = frappe.get_single("List Tooltip Settings")
@@ -56,6 +69,7 @@ class TestListTooltipSettings(FrappeTestCase):
 				}
 			},
 		)
+		self.assertFalse(bootinfo.list_tooltip["comment_preview"])
 
 	def test_first_row_per_doctype_wins(self):
 		doc = frappe.get_single("List Tooltip Settings")

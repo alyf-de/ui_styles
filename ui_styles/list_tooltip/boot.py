@@ -34,5 +34,9 @@ def extend_bootinfo(bootinfo):
 			},
 		)
 
-	if by_doctype:
-		bootinfo.list_tooltip = {"by_doctype": by_doctype}
+	comment_preview = bool(frappe.db.get_single_value(SETTINGS_DOCTYPE, "comment_preview"))
+	if by_doctype or comment_preview:
+		bootinfo.list_tooltip = {
+			"by_doctype": by_doctype,
+			"comment_preview": comment_preview,
+		}
