@@ -15,3 +15,4 @@ UI Styles ergänzt Frappe/ERPNext um Desk-UI-Funktionen. Funktionen bleiben inak
 - [Desk Background](/app/docs/de/ui-styles/desk-background) - optionaler Desk-Hintergrundfarbton
 - [Listen-Scroll](/app/docs/de/ui-styles/list-scroll) - optionale dichte Listenansicht
 - [Listen-Tooltip](/app/docs/de/ui-styles/list-tooltip) - optionale Feldvorschau beim Überfahren einer Listenzeile
+- [Verlauf](/app/docs/de/ui-styles/history) - optionales Uhr-Menü zuletzt besuchter Desk-Seiten
