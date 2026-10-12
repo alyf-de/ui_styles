@@ -19,7 +19,7 @@ $(() => {
 		["workspaces", __("Workspaces")],
 		["reports", __("Reports")],
 		["lists", __("Lists")],
-		["documents", __("Documents")],
+		["documents", __("Documents", null, "History")],
 	];
 
 	api.category = function (route_str) {
@@ -38,7 +38,11 @@ $(() => {
 		}
 		if (kind === "Form") {
 			const name = parts.slice(2).join("/");
-			if (is_settings || !name || name === doctype) {
+			if (
+				is_settings ||
+				!name ||
+				(frappe.model.is_single && frappe.model.is_single(doctype))
+			) {
 				return "settings";
 			}
 			return "documents";
@@ -82,11 +86,14 @@ $(() => {
 
 	function session_history() {
 		const items = [];
-		(frappe.route_history_queue || []).forEach((row) => {
-			if (row && row.route) {
-				items.push({ route: row.route, creation: row.creation || null });
-			}
-		});
+		(frappe.route_history_queue || [])
+			.slice()
+			.reverse()
+			.forEach((row) => {
+				if (row && row.route) {
+					items.push({ route: row.route, creation: row.creation || null });
+				}
+			});
 		(frappe.route_history || [])
 			.slice()
 			.reverse()
@@ -264,27 +271,31 @@ $(() => {
 				filters[key] = true;
 			});
 			save_filters(filters);
-			paint_list($menu, $menu.data("items") || []);
+			load_recent($menu);
 		});
 		$menu.find(".history-filter-option input").on("change", (event) => {
 			event.stopPropagation();
 			const filters = load_filters();
 			filters[event.target.dataset.group] = event.target.checked;
 			save_filters(filters);
-			paint_list($menu, $menu.data("items") || []);
+			load_recent($menu);
 		});
 	}
 
-	function render_menu($root) {
-		const $menu = $root.find(".history-dropdown");
-		$menu.html(filters_html());
-		bind_filters($menu);
-		$menu.data("items", []);
-		paint_list($menu, []);
+	function hidden_group_names() {
+		const filters = load_filters();
+		return GROUPS.filter(([key]) => !filters[key]).map(([key]) => key);
+	}
+
+	function load_recent($menu) {
 		const session_items = session_history();
 		frappe.call({
 			method: "ui_styles.history.history.get_recent",
-			args: { limit: maxEntries },
+			args: {
+				limit: maxEntries,
+				current_route: standard_route(frappe.get_route_str && frappe.get_route_str()),
+				hidden_groups: hidden_group_names(),
+			},
 			callback: (r) => {
 				const items = merge_history(session_items, r.message || []);
 				$menu.data("items", items);
@@ -296,6 +307,15 @@ $(() => {
 				paint_list($menu, items);
 			},
 		});
+	}
+
+	function render_menu($root) {
+		const $menu = $root.find(".history-dropdown");
+		$menu.html(filters_html());
+		bind_filters($menu);
+		$menu.data("items", []);
+		paint_list($menu, []);
+		load_recent($menu);
 	}
 
 	function mount() {

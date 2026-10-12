@@ -649,8 +649,9 @@ msgstr "Verlauf Einstellungen"
 msgid "How many distinct recent pages the History menu shows. 50 is the maximum when no filter is set."
 msgstr "Wie viele verschiedene zuletzt besuchte Seiten das Verlauf-Menü zeigt. 50 ist das Maximum, wenn kein Filter gesetzt ist."
 
-#. Label of a history filter group. Frappe translates Documents as Dokumente; this menu means vouchers.
+#. Label of a history filter group. Context keeps this off the shared Documents msgid.
 #: ui_styles/public/history/history.js
+msgctxt "History"
 msgid "Documents"
 msgstr "Belege"
 
