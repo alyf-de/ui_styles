@@ -206,8 +206,8 @@ $(() => {
 						${__("Filters")}
 					</button>
 					<button type="button" class="history-filters-chip" ${hidden ? "" : "hidden"} aria-label="${__(
-						"Clear"
-					)}">
+			"Clear"
+		)}">
 						<span class="history-filters-count">${__("Filters")} ${hidden}</span>
 						<span class="history-filters-x" aria-hidden="true">&times;</span>
 					</button>
@@ -237,7 +237,9 @@ $(() => {
 		visible.forEach((item) => {
 			const when = item.creation ? frappe.datetime.comment_when(item.creation, true) : "";
 			$list.append(`
-				<a class="dropdown-item history-item" href="${frappe.utils.escape_html(item.href)}" role="menuitem">
+				<a class="dropdown-item history-item" href="${frappe.utils.escape_html(
+					item.href
+				)}" role="menuitem">
 					<span class="history-label">${frappe.utils.escape_html(item.label)}</span>
 					${when ? `<span class="history-when">${when}</span>` : ""}
 				</a>
