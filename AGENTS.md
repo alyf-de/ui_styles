@@ -101,3 +101,4 @@ Hard-refresh Desk after build for JS/CSS.
 | `desk_background` | **Desk Background** / `docs/.../desk-background/` | `desk_background/AGENTS.md` |
 | `list_scroll` | **List Scroll** / `docs/.../list-scroll/` | `list_scroll/AGENTS.md` |
 | `list_tooltip` | **List Tooltip** / `docs/.../list-tooltip/` | `list_tooltip/AGENTS.md` |
+| `history` | **History** / `docs/.../history/` | `history/AGENTS.md` |

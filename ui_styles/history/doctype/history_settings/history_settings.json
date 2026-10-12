@@ -1,0 +1,56 @@
+{
+ "actions": [],
+ "creation": "2026-10-09 16:03:05.535258",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "max_entries"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Clock menu of recently visited Desk pages.",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "default": "10",
+   "depends_on": "enabled",
+   "description": "How many distinct recent pages the History menu shows. 50 is the maximum when no filter is set.",
+   "fieldname": "max_entries",
+   "fieldtype": "Int",
+   "label": "Max Entries",
+   "non_negative": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-12 09:05:58.109541",
+ "modified_by": "Administrator",
+ "module": "History",
+ "name": "History Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

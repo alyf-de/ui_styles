@@ -624,3 +624,49 @@ msgstr "Zeile #{0}: {1} ist kein Feld von {2}, das in einer Liste angezeigt werd
 #: ui_styles/list_tooltip/doctype/list_tooltip_settings/list_tooltip_settings.json
 msgid "Show an info icon in configured list views that previews fields on hover."
 msgstr "Zeigt in konfigurierten Listenansichten ein Info-Symbol, das beim Überfahren Felder als Vorschau anzeigt."
+
+#. Description of the 'Enabled' (Check) field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "Clock menu of recently visited Desk pages."
+msgstr "Uhr-Menü der zuletzt besuchten Desk-Seiten."
+
+#: ui_styles/public/history/history.js
+msgid "History"
+msgstr "Verlauf"
+
+#: ui_styles/history/history.py
+msgid "History is not enabled."
+msgstr "Verlauf ist nicht aktiviert."
+
+#. Name of a DocType
+#: ui_styles/history/doctype/history_settings/history_settings.json
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "History Settings"
+msgstr "Verlauf Einstellungen"
+
+#. Description of the 'Max Entries' (Int) field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "How many distinct recent pages the History menu shows. 50 is the maximum when no filter is set."
+msgstr "Wie viele verschiedene zuletzt besuchte Seiten das Verlauf-Menü zeigt. 50 ist das Maximum, wenn kein Filter gesetzt ist."
+
+#. Label of a history filter group. Frappe translates Documents as Dokumente; this menu means vouchers.
+#: ui_styles/public/history/history.js
+msgid "Documents"
+msgstr "Belege"
+
+#. Label of an Int field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "Max Entries"
+msgstr "Max. Einträge"
+
+#: ui_styles/history/doctype/history_settings/history_settings.py
+msgid "Max Entries must be between 1 and {0}."
+msgstr "Max. Einträge muss zwischen 1 und {0} liegen."
+
+#: ui_styles/public/history/history.js
+msgid "No recent pages"
+msgstr "Keine zuletzt besuchten Seiten"
+
+#: ui_styles/history/doctype/history_settings/history_settings.py
+msgid "Reload the Desk (hard refresh) to apply History Settings changes."
+msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Verlauf Einstellungen anzuwenden."
