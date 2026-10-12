@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UI Styles VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-10-12 09:55+0000\n"
+"POT-Creation-Date: 2026-10-12 10:55+0000\n"
 "PO-Revision-Date: 2026-09-01 14:36+0000\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language: de\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "(no content)"
 msgstr "(kein Inhalt)"
 
-#: ui_styles/public/list_tooltip/list_tooltip.js:369
+#: ui_styles/public/list_tooltip/list_tooltip.js:372
 msgid "(no text)"
 msgstr "(kein Text)"
 
@@ -74,6 +74,12 @@ msgstr "Butter"
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
 msgid "Clear all user choices on reset"
 msgstr "Alle Benutzerauswahlen beim Zurücksetzen löschen"
+
+#. Description of the 'Enabled' (Check) field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "Clock menu of recently visited Desk pages."
+msgstr "Uhr-Menü der zuletzt besuchten Desk-Seiten."
+
 
 #. Label of a Select field in DocType 'Desk Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -289,6 +295,12 @@ msgstr "DocType-Überschreibungen"
 msgid "DocType {0} is listed more than once in DocType Overrides."
 msgstr "DocType {0} ist in den DocType-Überschreibungen mehrfach aufgeführt."
 
+#: ui_styles/public/history/history.js:22
+msgctxt "History"
+msgid "Documents"
+msgstr "Belege"
+
+
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:42
 msgid "Duplicate DocType"
 msgstr "Doppelter DocType"
@@ -340,6 +352,31 @@ msgstr "Nebel"
 #: ui_styles/list_tooltip/doctype/list_tooltip_configuration/list_tooltip_configuration.json
 msgid "Header Fields"
 msgstr "Kopfzeilenfelder"
+
+#: ui_styles/public/history/history.js:326
+#: ui_styles/public/history/history.js:328
+msgid "History"
+msgstr "Verlauf"
+
+
+#. Name of a DocType
+#. Label of a Link in the UI Styles Workspace
+#: ui_styles/history/doctype/history_settings/history_settings.json
+#: ui_styles/ui_styles/workspace/ui_styles/ui_styles.json
+msgid "History Settings"
+msgstr "Verlauf Einstellungen"
+
+
+#: ui_styles/history/history.py:18
+msgid "History is not enabled."
+msgstr "Verlauf ist nicht aktiviert."
+
+
+#. Description of the 'Max Entries' (Int) field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "How many distinct recent pages the History menu shows. 50 is the maximum when no filter is set."
+msgstr "Wie viele verschiedene zuletzt besuchte Seiten das Verlauf-Menü zeigt. 50 ist das Maximum, wenn kein Filter gesetzt ist."
+
 
 #: ui_styles/doc_table/api.py:204 ui_styles/doc_table/api.py:229
 #: ui_styles/doc_table/api.py:291
@@ -410,6 +447,17 @@ msgstr "Listen-Tooltip Konfiguration"
 msgid "List Tooltip Settings"
 msgstr "Listen-Tooltip Einstellungen"
 
+#. Label of a Int field in DocType 'History Settings'
+#: ui_styles/history/doctype/history_settings/history_settings.json
+msgid "Max Entries"
+msgstr "Max. Einträge"
+
+
+#: ui_styles/history/doctype/history_settings/history_settings.py:29
+msgid "Max Entries must be between 1 and {0}."
+msgstr "Max. Einträge muss zwischen 1 und {0} liegen."
+
+
 #. Option for the 'Site Colour Preset' (Select) field in DocType 'Desk
 #. Background Settings'
 #: ui_styles/desk_background/doctype/desk_background_settings/desk_background_settings.json
@@ -429,6 +477,11 @@ msgstr "Kein Verknüpfungsfeld auf {0}, das auf {1} zeigt. Setzen Sie link: fiel
 #: ui_styles/public/doc_table/doc_table.js:373
 msgid "No linked documents"
 msgstr "Keine verknüpften Dokumente"
+
+#: ui_styles/public/history/history.js:245
+msgid "No recent pages"
+msgstr "Keine zuletzt besuchten Seiten"
+
 
 #. Description of the 'Sticky Columns' (Int) field in DocType 'List Scroll
 #. DocType Setting'
@@ -487,6 +540,11 @@ msgstr "Paginierungsleiste am unteren Fensterrand fixieren (gleicher Abstand wie
 #: ui_styles/public/doc_table/form_builder_preview.js:33
 msgid "Please set Options to a DocType before setting filters"
 msgstr "Bitte setzen Sie Optionen auf ein DocType, bevor Sie Filter setzen"
+
+#: ui_styles/history/doctype/history_settings/history_settings.py:36
+msgid "Reload the Desk (hard refresh) to apply History Settings changes."
+msgstr "Schreibtisch neu laden (harter Refresh), um Änderungen an Verlauf Einstellungen anzuwenden."
+
 
 #: ui_styles/list_scroll/doctype/list_scroll_settings/list_scroll_settings.py:60
 msgid "Reload the Desk (hard refresh) to apply List Scroll Settings changes."

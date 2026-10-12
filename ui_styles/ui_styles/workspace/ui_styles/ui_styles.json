@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\":\"ui_styles_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">UI Styles</span>\",\"col\":12}},{\"id\":\"ui_styles_intro\",\"type\":\"paragraph\",\"data\":{\"text\":\"Enable and configure Desk UI features. Features stay inactive until they are turned on here. Only System Managers see this workspace.\",\"col\":12}},{\"id\":\"ui_styles_spacer\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ui_styles_settings_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
- "creation": "2026-09-01 16:55:38.915754",
+ "creation": "2026-10-09 15:29:29.541187",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -17,7 +17,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Settings",
-   "link_count": 3,
+   "link_count": 4,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -51,9 +51,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "History Settings",
+   "link_count": 0,
+   "link_to": "History Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-10-02 16:41:51.497621",
+ "modified": "2026-10-09 16:03:05.732134",
  "modified_by": "Administrator",
  "module": "UI Styles",
  "name": "UI Styles",
