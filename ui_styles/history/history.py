@@ -19,7 +19,7 @@ def _require_history() -> int:
 	return limit
 
 
-def category(route: str) -> str | None:
+def category(route: str, singles: dict | None = None) -> str | None:
 	"""Same groups as the menu checkboxes. None stays visible."""
 	parts = [part for part in (route or "").split("/") if part]
 	if not parts:
@@ -35,7 +35,7 @@ def category(route: str) -> str | None:
 		return "settings" if is_settings else "lists"
 	if kind == "Form":
 		name = "/".join(parts[2:])
-		if is_settings or not name or _is_single(doctype):
+		if is_settings or not name or _is_single(doctype, singles):
 			return "settings"
 		return "documents"
 	if is_settings:
@@ -43,10 +43,15 @@ def category(route: str) -> str | None:
 	return None
 
 
-def _is_single(doctype: str) -> bool:
+def _is_single(doctype: str, singles: dict | None = None) -> bool:
 	if not doctype:
 		return False
-	return bool(frappe.db.get_value("DocType", doctype, "issingle"))
+	if singles is not None and doctype in singles:
+		return singles[doctype]
+	single = bool(frappe.db.get_value("DocType", doctype, "issingle"))
+	if singles is not None:
+		singles[doctype] = single
+	return single
 
 
 def _hidden_groups(value) -> set[str]:
@@ -84,14 +89,16 @@ def get_recent(
 	limit = min(max(cint(limit) or cap, 1), cap)
 	current = (current_route or "").strip().lstrip("/")
 	hidden = _hidden_groups(hidden_groups)
+	singles = {}
 	items = []
 	for row in _latest_routes():
 		route = (row.route or "").strip()
 		if not route or route == current:
 			continue
-		group = category(route)
-		if group and group in hidden:
-			continue
+		if hidden:
+			group = category(route, singles)
+			if group and group in hidden:
+				continue
 		items.append({"route": route, "creation": str(row.creation) if row.creation else None})
 		if len(items) >= limit:
 			break
