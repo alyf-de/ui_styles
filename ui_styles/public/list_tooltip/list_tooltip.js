@@ -439,9 +439,8 @@ $(() => {
 			if (!ctx) {
 				return;
 			}
-			clearTimeout(hover_timer);
-			clearTimeout(hide_timer);
-			hide_timer = null;
+			// Drop any previous row's preview before the wait / fetch for this row.
+			hide_popover();
 			const seq = ++fetch_seq;
 
 			hover_timer = setTimeout(() => {
