@@ -100,11 +100,24 @@
 }
 
 .history-filters-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
 	padding: 2px 0;
 	color: var(--text-color);
 	background: transparent;
 	border: none;
 	font-size: var(--text-sm);
+}
+
+.history-filters-chevron {
+	display: inline-flex;
+	color: var(--text-muted);
+	--icon-stroke: var(--text-muted);
+}
+
+.history-filters.is-open .history-filters-chevron {
+	transform: rotate(180deg);
 }
 
 .history-filters-chip {

@@ -210,7 +210,11 @@ $(() => {
 			<div class="history-filters">
 				<div class="history-filters-bar">
 					<button type="button" class="btn-reset history-filters-toggle" aria-expanded="false">
-						${__("Filters")}
+						<span>${__("Filters")}</span>
+						<span class="history-filters-chevron" aria-hidden="true">${frappe.utils.icon(
+							"es-line-down",
+							"xs"
+						)}</span>
 					</button>
 					<button type="button" class="history-filters-chip" ${hidden ? "" : "hidden"} aria-label="${__(
 			"Clear"
