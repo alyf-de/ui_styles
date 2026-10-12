@@ -18,6 +18,9 @@ $(() => {
 	const config = boot.by_doctype || {};
 	const has_field_tooltips = Object.keys(config).length > 0;
 	let $popover;
+	let hide_timer = null;
+	// Set by setup_comment_preview; no-op when comment preview is off.
+	let cancel_pending_preview = () => {};
 
 	function get_popover() {
 		if (!$popover || !$popover.length) {
@@ -29,7 +32,16 @@ $(() => {
 	}
 
 	function hide_popover() {
+		clearTimeout(hide_timer);
+		hide_timer = null;
+		cancel_pending_preview();
 		$popover?.hide().removeClass("list-tooltip-popover--thread");
+	}
+
+	function schedule_hide_popover() {
+		clearTimeout(hide_timer);
+		// Bridge the gap between comment-count and the popover so the user can move onto it.
+		hide_timer = setTimeout(hide_popover, 120);
 	}
 
 	frappe.router.on("change", hide_popover);
@@ -207,6 +219,31 @@ $(() => {
 		let fetch_seq = 0;
 		let hover_timer = null;
 
+		cancel_pending_preview = () => {
+			clearTimeout(hover_timer);
+			hover_timer = null;
+			fetch_seq += 1;
+		};
+
+		// Field-tooltip setup already dismisses on render_list; comment-only mode needs the same.
+		if (!has_field_tooltips) {
+			const proto = frappe.views.ListView.prototype;
+			const render_list = proto.render_list;
+			proto.render_list = function () {
+				render_list.call(this);
+				hide_popover();
+			};
+		}
+
+		const $pop = get_popover();
+		$pop.on("mouseenter", () => {
+			clearTimeout(hide_timer);
+			hide_timer = null;
+		});
+		$pop.on("mouseleave", () => {
+			hide_popover();
+		});
+
 		function get_list_context($el) {
 			const route = frappe.get_route() || [];
 			if (route[0] !== "List" || !route[1]) {
@@ -243,15 +280,19 @@ $(() => {
 				.catch(() => ({ comment: null, comm: null }));
 		}
 
-		function comm_has_body(row) {
+		function comm_body_text(row) {
 			if (!row) {
-				return false;
+				return "";
 			}
-			const raw =
-				row.text_content && String(row.text_content).trim()
-					? row.text_content
-					: row.content;
-			return !!html_to_text(raw || "");
+			// text_content is already plain text; html_to_text would strip "<addr>" spans.
+			if (row.text_content && String(row.text_content).trim()) {
+				return String(row.text_content).trim();
+			}
+			return html_to_text(row.content || "");
+		}
+
+		function comm_has_body(row) {
+			return !!comm_body_text(row);
 		}
 
 		function comment_has_body(row) {
@@ -357,13 +398,9 @@ $(() => {
 				if (ts) {
 					meta_inner += `<div class="list-tooltip-meta-time">${escape_html(ts)}</div>`;
 				}
-				const raw =
-					row.text_content && String(row.text_content).trim()
-						? row.text_content
-						: row.content;
 				return (
 					`<div class="list-tooltip-meta">${meta_inner}</div>` +
-					build_body_preview(html_to_text(raw), 18)
+					build_body_preview(comm_body_text(row), 18)
 				);
 			}
 
@@ -385,6 +422,14 @@ $(() => {
 
 		const selector = ".layout-main .frappe-list .comment-count, .frappe-list .comment-count";
 
+		function anchor_still_usable(anchor) {
+			if (!anchor?.isConnected) {
+				return false;
+			}
+			const r = anchor.getBoundingClientRect();
+			return r.width > 0 && r.height > 0;
+		}
+
 		$(document).on("mouseenter", selector, function () {
 			const anchor = this;
 			const ctx = get_list_context($(anchor));
@@ -392,11 +437,13 @@ $(() => {
 				return;
 			}
 			clearTimeout(hover_timer);
+			clearTimeout(hide_timer);
+			hide_timer = null;
 			const seq = ++fetch_seq;
 
 			hover_timer = setTimeout(() => {
 				fetch_last_thread(ctx).then((result) => {
-					if (seq !== fetch_seq) {
+					if (seq !== fetch_seq || !anchor_still_usable(anchor)) {
 						return;
 					}
 					const winner = resolve_displayable(result.comment, result.comm);
@@ -413,9 +460,8 @@ $(() => {
 		});
 
 		$(document).on("mouseleave", selector, () => {
-			clearTimeout(hover_timer);
-			fetch_seq += 1;
-			hide_popover();
+			cancel_pending_preview();
+			schedule_hide_popover();
 		});
 	}
 });

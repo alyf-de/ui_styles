@@ -63,6 +63,8 @@
 	max-width: min(720px, 92vw);
 	max-height: 50vh;
 	overflow: auto;
+	/* Shared popover is pointer-events: none; thread needs scroll / hover stay-open. */
+	pointer-events: auto;
 }
 .list-tooltip-popover--thread .list-tooltip-meta {
 	font-size: var(--text-xs);
