@@ -11,7 +11,7 @@ A clock button in the Desk navbar opens a menu of pages you visited recently. Th
 
 The feature is **off by default**. A System Manager must enable *Enabled* on **History Settings** before the button appears.
 
-*Filters* at the top of the menu can hide Settings, Workspaces, Reports, Lists, and Documents. The choice is kept in this browser. The X on the filter chip turns every group back on. Hiding a group does not delete **Route History**.
+*Filters* at the top of the menu can hide Settings, Workspaces, Dashboards, Reports, Lists, and Documents. A workspace whose title ends in Settings, such as **ERPNext Settings**, belongs to Settings. The choice is kept in this browser. The X on the filter chip turns every group back on. Hiding a group does not delete **Route History**.
 
 ## Guides
 
