@@ -11,7 +11,7 @@ Ein Uhr-Symbol in der Desk-Navigationsleiste öffnet ein Menü der zuletzt besuc
 
 Die Funktion ist **standardmäßig aus**. Ein System-Manager muss *Aktiviert* in **Verlauf Einstellungen** einschalten, bevor das Symbol erscheint.
 
-*Filter* oben im Menü kann Einstellungen, Arbeitsbereiche, Berichte, Listen und Belege ausblenden. Die Auswahl bleibt in diesem Browser gespeichert. Das X am Filter-Chip schaltet alle Gruppen wieder ein. Ausblenden löscht keine **Route History**.
+*Filter* oben im Menü kann Einstellungen, Arbeitsbereiche, Dashboards, Berichte, Listen und Belege ausblenden. Ein Arbeitsbereich, dessen Titel auf Settings endet, zum Beispiel **ERPNext Settings**, gehört zu Einstellungen. Die Auswahl bleibt in diesem Browser gespeichert. Das X am Filter-Chip schaltet alle Gruppen wieder ein. Ausblenden löscht keine **Route History**.
 
 ## Anleitungen
 
