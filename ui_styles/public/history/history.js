@@ -17,18 +17,26 @@ $(() => {
 	const GROUPS = [
 		["settings", __("Settings")],
 		["workspaces", __("Workspaces")],
+		["dashboards", __("Dashboards")],
 		["reports", __("Reports")],
 		["lists", __("Lists")],
 		["documents", __("Documents", null, "History")],
 	];
+
+	function workspace_title(parts) {
+		return parts[1] === "private" ? parts[2] || "" : parts[1] || "";
+	}
 
 	api.category = function (route_str) {
 		const parts = (route_str || "").split("/").filter(Boolean);
 		const kind = parts[0];
 		const doctype = parts[1] || "";
 		const is_settings = /settings$/i.test(doctype);
-		if (kind === "Workspaces" || kind === "dashboard") {
-			return "workspaces";
+		if (kind === "Workspaces") {
+			return /settings$/i.test(workspace_title(parts)) ? "settings" : "workspaces";
+		}
+		if (kind === "dashboard-view") {
+			return "dashboards";
 		}
 		if (kind === "query-report") {
 			return "reports";
@@ -75,8 +83,11 @@ $(() => {
 		if (route[0] === "query-report" && route[1]) {
 			return `${__(route[1])} ${__("Report")}`;
 		}
-		if ((route[0] === "Workspaces" || route[0] === "dashboard") && route[1]) {
-			return __(route[1]);
+		if (route[0] === "Workspaces" && workspace_title(route)) {
+			return __(workspace_title(route));
+		}
+		if (route[0] === "dashboard-view" && route[1]) {
+			return `${__(route[1])} ${__("Dashboard")}`;
 		}
 		if (frappe.utils.get_route_label) {
 			return $("<div>").html(frappe.utils.get_route_label(route_str)).text();
@@ -118,7 +129,7 @@ $(() => {
 			kind === "Tree" ||
 			kind === "query-report" ||
 			kind === "Workspaces" ||
-			kind === "dashboard"
+			kind === "dashboard-view"
 		) {
 			return parts.join("/");
 		}
